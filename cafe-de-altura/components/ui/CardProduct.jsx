@@ -9,7 +9,7 @@ export default function Cards() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch('/api/products');
+        const response = await fetch('https://cafe-de-altura-alpha.vercel.app/api/products');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
