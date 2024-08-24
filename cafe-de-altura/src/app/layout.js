@@ -1,6 +1,6 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
-// import Navbar from "../../components/ui/Navbar";
+import Navbar from "../../components/ui/Navbar";
 
 const inter = Outfit({ subsets: ["latin"] });
 
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className={inter.className}>
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
         </body>
     </html>
