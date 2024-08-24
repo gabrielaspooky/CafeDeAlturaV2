@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import { MinusCircle, PlusCircle } from 'lucide-react';
-import Footer from '../../../components/ui/Footer';
-import CopyrightFooter from '../../../components/ui/CopyrightFooter';
 import Link from 'next/link';
+import CopyrightFooter from '../../../components/ui/CopyrightFooter';
+import Footer from '../../../components/ui/Footer';
 
 const shoppingBag = () => {
   return (
@@ -107,6 +107,7 @@ const shoppingBag = () => {
           </div>
         </div>
       </div>
+      <Footer />
       <CopyrightFooter />
     </div>
   );
