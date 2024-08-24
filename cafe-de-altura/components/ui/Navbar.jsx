@@ -5,6 +5,7 @@ import React from "react";
 import Link from "next/link";
 import ShoppingBagDrawer from "./BagDrawer";
 
+
 const NavBar = () => {
   return (
     <nav className="bg-[#2B2A2B] relative z-50 h-16 flex justify-between items-center px-8 text-[#FFFFFF] w-full">
