@@ -2,9 +2,8 @@
 import React, { useContext } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Cards from "../../../components/ui/CardProduct";
 // import { FormContext } from "@/context/FormContext";
-// import CardProduct from "@/components/CardProduct";
-
 const ProductCards = () => {
     // const {dataCoffee} = useContext(FormContext)
   return (
@@ -13,6 +12,9 @@ const ProductCards = () => {
         Novedades
       </h2>
       <div className="flex max-w-[1200px] min-h-[391.39px] gap-6 justify-between items-center">
+        <Cards>
+
+        </Cards>
         {/* {dataCoffee.slice(0, 4).map((card, i) => {
           return <CardProduct key={i} data={card} />;
         })} */}

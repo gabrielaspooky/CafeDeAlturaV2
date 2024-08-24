@@ -1,5 +1,5 @@
 // lib/mongodb.mjs
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 dotenv.config(); // Cargar variables de entorno desde .env
@@ -9,22 +9,24 @@ if (!uri) {
   throw new Error('Please add your Mongo URI to .env');
 }
 
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+let cachedClient = null;
+let cachedDb = null;
 
-export async function connectToDatabase() {
+export async function dbConnect() {
+  if (cachedDb) {
+    return cachedDb;
+  }
+
   try {
-    await client.connect();
+    const client = await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    cachedDb = client.connection.db;
     console.log("Connected to MongoDB successfully!");
-    return client.db(); // Retorna la base de datos por defecto
+    return cachedDb;
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
     throw error;
   }
 }
-

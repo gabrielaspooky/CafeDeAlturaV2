@@ -1,7 +1,6 @@
-// pages/api/products.js
 import { NextResponse } from 'next/server';
-import dbConnect from '../../../../lib/mongodb.mjs';
-import Product from '../../../../models/Product';
+import { dbConnect } from '../../../../lib/mongodb.mjs'; // Importa usando el nombre de la exportación
+import Product from '../../../../models/Product'; // Asegúrate de que esta ruta sea correcta
 
 export async function GET(request) {
   try {
