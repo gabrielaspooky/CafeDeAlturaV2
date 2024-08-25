@@ -8,7 +8,7 @@ import { ShoppingBasket } from 'lucide-react';
 
 const NavBar = () => {
   return (
-    <nav className="bg-[#2B2A2B] relative z-50 h-12 flex justify-between items-center px-8 text-[#FFFFFF] w-full">
+    <nav className="top-0 bg-[#2B2A2B] relative z-50 h-12 flex justify-between items-center px-8 text-[#FFFFFF] w-full">
       {/* Logo Section */}
       <div className="flex items-center gap-1">
         <p className="text-lg font-semibold">cafedealtura.com</p>

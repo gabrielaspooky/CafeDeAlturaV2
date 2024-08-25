@@ -41,7 +41,7 @@ export default function Cards({ products }) {
               €{typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}
             </p>
             <button 
-              className={`text-black mt-2 px-4 py-2 rounded ${product.available ? 'bg-green-500' : 'bg-red-500'}`}
+              className={`text-white flex-col mt-2 px-4 py-2 rounded ${product.available ? 'bg-[#2A5B45B2] hover:bg-[#2A5B45]' : 'bg-[#E3DED7]'}`}
               disabled={!product.available}
               onClick={() => product.available && handleAddToCart(product)}
             >
