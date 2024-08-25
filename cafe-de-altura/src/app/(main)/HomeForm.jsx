@@ -25,15 +25,15 @@ const HomeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <label className="block">
+    <form onSubmit={handleSubmit} className="space-y-4 bg-white">
+      <label className="block text-black">
         Nombre completo:
         <input
           type="text"
           name="nombreCompleto"
           value={formData.nombreCompleto}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded"
+          className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
         />
       </label>
       <label className="block">
@@ -84,7 +84,7 @@ const HomeForm = () => {
         />
         Acepto la Política de Privacidad y los Términos y condiciones.
       </label>
-      <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">Enviar</button>
+      <button type="submit" className="px-4 py-2 bg-[#2A5B45] text-white rounded">Enviar</button>
     </form>
   );
 };
