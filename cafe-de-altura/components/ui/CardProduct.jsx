@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { useCart } from '@/context/ProductContext';
 
 export default function Cards({ products }) {
   return (
@@ -16,8 +17,9 @@ export default function Cards({ products }) {
             €{typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}
           </p>
           <button 
-            className={`text-black bg-black mt-2 px-4 py-2 rounded ${product.available ? 'bg-green-500' : 'bg-red-500'}`}
-            disabled={!product.available} // Optional: Disable button if not available
+            className={`text-black mt-2 px-4 py-2 rounded ${product.available ? 'bg-green-500' : 'bg-red-500'}`}
+            disabled={!product.available}
+            onClick={() => product.available && handleAddToCart(product)}
           >
             {product.available ? 'Añadir' : 'Agotado'}
           </button>
