@@ -7,7 +7,6 @@ export default function Cards({ products }) {
   const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
-    // Cargar el carrito desde localStorage al iniciar
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setCart(storedCart);
   }, []);
@@ -17,10 +16,8 @@ export default function Cards({ products }) {
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
     
-    // Mostrar el Toast
     setShowToast(true);
     
-    // Ocultar el Toast después de 3 segundos
     setTimeout(() => {
       setShowToast(false);
     }, 3000);
@@ -30,7 +27,7 @@ export default function Cards({ products }) {
     <>
       <div className="grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 w-full">
         {products.map((product) => (
-          <div key={product._id} className="border rounded-lg p-4 shadow-md">
+          <div key={product._id} className="border rounded-lg p-4 shadow-md flex flex-col items-center">
             <img 
               src={product.img_url} 
               alt={product.brand} 
@@ -40,13 +37,15 @@ export default function Cards({ products }) {
             <p className="text-gray-600 text-center">
               €{typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}
             </p>
-            <button 
-              className={`text-white flex-col mt-2 px-4 py-2 rounded ${product.available ? 'bg-[#2A5B45B2] hover:bg-[#2A5B45]' : 'bg-[#E3DED7]'}`}
-              disabled={!product.available}
-              onClick={() => product.available && handleAddToCart(product)}
-            >
-              {product.available ? 'Añadir' : 'Agotado'}
-            </button>
+            <div className="flex justify-center mt-2 w-full">
+              <button 
+                className={`text-white px-4 py-2 rounded ${product.available ? 'bg-[#2A5B45B2] hover:bg-[#2A5B45]' : 'bg-[#E3DED7]'}`}
+                disabled={!product.available}
+                onClick={() => product.available && handleAddToCart(product)}
+              >
+                {product.available ? 'Añadir' : 'Agotado'}
+              </button>
+            </div>
           </div>
         ))}
       </div>
