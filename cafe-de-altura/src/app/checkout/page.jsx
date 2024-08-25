@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const CheckoutPage = () => {
   return (
-    <div className="bg-white min-h-screen py-8">
+    <div className="bg-white min-h-screen py-8 text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-2xl font-semibold text-center text-green-900 mb-8">Checkout</h1>
         
