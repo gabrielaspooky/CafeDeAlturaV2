@@ -1,12 +1,15 @@
+"use client"
 import React, { useState } from 'react';
+import { useCart } from "../../src/context/CartContext" // Ajusta la ruta según la ubicación de tu archivo
 import Link from 'next/link';
 import { ShoppingBag, ShoppingCart } from 'lucide-react';
 
 const ShoppingBagDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { cart } = useCart();
 
   return (
-    <div className="relative z-40"> {/* Ajusta el z-index aquí */}
+    <div className="relative z-40">
       {/* Shopping Bag Icon */}
       <div 
         onMouseEnter={() => setIsOpen(true)} 
@@ -25,7 +28,18 @@ const ShoppingBagDrawer = () => {
           onMouseLeave={() => setIsOpen(false)}
         >
           <h3 className="text-lg font-semibold mb-2 text-black">Tu carrito</h3>
-          <p className="text-gray-600">No tienes productos en tu carrito.</p>
+          {cart.length > 0 ? (
+            <ul>
+              {cart.map((product, index) => (
+                <li key={index} className="flex items-center justify-between mb-2">
+                  <span>{product.brand}</span>
+                  <span>€{product.price.toFixed(2)}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-gray-600">No tienes productos en tu carrito.</p>
+          )}
           <Link href="/shoppingBag">
             <button className="mt-4 px-4 py-2 text-black flex items-center">
               <ShoppingCart size={40} strokeWidth={1.25} />
