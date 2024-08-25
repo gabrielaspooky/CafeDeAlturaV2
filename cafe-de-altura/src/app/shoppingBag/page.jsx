@@ -55,7 +55,9 @@ const ShoppingBag = () => {
                       />
                       <div className="ml-4">
                         <p className="text-sm font-medium">{product.brand}</p>
-                        <p className="text-sm text-gray-500">{product.description || 'Descripción del producto'}</p>
+                        <p className="text-sm text-gray-500">
+                        Paquete de café, 250 gr
+                          </p>
                       </div>
                     </div>
                     <p className="font-semibold">€{typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
