@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import Cards from './ui/CardProduct';
+import Cards from '../../../../components/ui/CardProduct';
 
 export default function ProductFetcher() {
   const [products, setProducts] = useState([]);
@@ -26,8 +26,8 @@ export default function ProductFetcher() {
     fetchProducts();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className='text-black'>Loading...</p>;
+  if (error) return <p className='text-black'>Error: {error}</p>;
 
   return <Cards products={products} />;
 }

@@ -2,7 +2,7 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import ProductFetcher from "../../../components/ProductFetcher";
+import ProductFetcher from "../api/products/ProductFetcher";
 import Cards from "../../../components/ui/CardProduct";
 
 const ProductCards = () => (

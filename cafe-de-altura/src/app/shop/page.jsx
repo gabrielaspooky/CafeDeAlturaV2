@@ -3,7 +3,7 @@ import React from 'react';
 import BenefitsSection from '../(main)/BenefitsSection';
 import Footer from '../../../components/ui/Footer';
 import CopyrightFooter from '../../../components/ui/CopyrightFooter';
-import ProductFetcher from '../../../components/ProductFetcher';
+import ProductFetcher from '../api/products/ProductFetcher';
 
 const Shop = () => {
   return (
