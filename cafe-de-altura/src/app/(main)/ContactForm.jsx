@@ -1,5 +1,7 @@
+"use client"
 import React from 'react'
 import { Mail, Phone } from "lucide-react";
+import HomeForm from './HomeForm';
 
 const ContactForm = () => {
   return (
@@ -26,6 +28,7 @@ const ContactForm = () => {
           <a href="#" className="text-blue-500 font-semibold">Ver nuestras ofertas.</a>
         </p>
           </div>
+          <HomeForm />
     </div>
   )
 }
