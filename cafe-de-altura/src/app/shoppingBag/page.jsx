@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { MinusCircle, PlusCircle } from 'lucide-react';
@@ -8,34 +8,45 @@ const ShoppingBag = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    // Leer el carrito desde localStorage
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
-    // Asegurarse de que cada producto tenga una propiedad 'quantity'
-    const initializedCart = savedCart.map(product => ({
-      ...product,
-      quantity: product.quantity || 1 // Asignar cantidad 1 si no existe
-    }));
-    setCart(initializedCart);
+    setCart(savedCart);
   }, []);
 
+  useEffect(() => {
+    // Guardar el resumen del carrito en localStorage
+    const subtotal = cart.reduce((total, product) => {
+      const price = parseFloat(product.price) || 0;
+      const quantity = parseInt(product.quantity) || 1;
+      return total + (price * quantity);
+    }, 0);
+    const shippingCost = 9.00;
+    const total = subtotal + shippingCost;
+
+    localStorage.setItem('cartSummary', JSON.stringify({
+      subtotal: subtotal.toFixed(2),
+      shippingCost: shippingCost.toFixed(2),
+      total: total.toFixed(2),
+    }));
+  }, [cart]);
+
   const updateQuantity = (productId, change) => {
-    // Actualizar la cantidad del producto
     const updatedCart = cart.map(product => {
       if (product._id === productId) {
-        const newQuantity = Math.max(1, product.quantity + change); // Asegúrate de que la cantidad no sea menor a 1
+        const newQuantity = Math.max(1, (parseInt(product.quantity) || 1) + change);
         return { ...product, quantity: newQuantity };
       }
       return product;
     });
-
-    // Guardar el carrito actualizado en el estado y en localStorage
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
-  // Calcula el subtotal y total
-  const subtotal = cart.reduce((total, product) => total + (product.price || 0) * (product.quantity || 1), 0);
-  const shippingCost = 9.00; // Costo de envío urgente, puedes ajustar según la opción seleccionada
+  const subtotal = cart.reduce((total, product) => {
+    const price = parseFloat(product.price) || 0;
+    const quantity = parseInt(product.quantity) || 1;
+    return total + (price * quantity);
+  }, 0);
+  const shippingCost = 9.00;
   const total = subtotal + shippingCost;
 
   return (
@@ -59,11 +70,11 @@ const ShoppingBag = () => {
                       <button 
                         className="text-gray-600" 
                         onClick={() => updateQuantity(product._id, -1)}
-                        disabled={product.quantity <= 1} // Evitar que la cantidad sea menor que 1
+                        disabled={(parseInt(product.quantity) || 1) <= 1}
                       >
                         <MinusCircle className="h-6 w-6" />
                       </button>
-                      <span className="mx-2">{product.quantity}</span> {/* Mostrar la cantidad actual */}
+                      <span className="mx-2">{(parseInt(product.quantity) || 1)}</span>
                       <button 
                         className="text-gray-600" 
                         onClick={() => updateQuantity(product._id, 1)}
@@ -83,7 +94,7 @@ const ShoppingBag = () => {
                         <p className="text-sm text-gray-500">Paquete de café, 250 gr</p>
                       </div>
                     </div>
-                    <p className="font-semibold">€{((product.price || 0) * (product.quantity || 1)).toFixed(2)}</p>
+                    <p className="font-semibold">€{(((parseFloat(product.price) || 0) * (parseInt(product.quantity) || 1))).toFixed(2)}</p>
                   </div>
                 </div>
               ))

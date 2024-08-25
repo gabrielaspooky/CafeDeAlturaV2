@@ -1,8 +1,21 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import { CreditCard, Banknote, Phone } from 'lucide-react';
 import Image from 'next/image';
 
 const CheckoutPage = () => {
+  const [cartSummary, setCartSummary] = useState({
+    subtotal: '0.00',
+    shippingCost: '0.00',
+    total: '0.00'
+  });
+
+  useEffect(() => {
+    // Leer el resumen del carrito desde localStorage
+    const savedSummary = JSON.parse(localStorage.getItem('cartSummary')) || {};
+    setCartSummary(savedSummary);
+  }, []);
+
   return (
     <div className="bg-white min-h-screen py-8 text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,12 +57,12 @@ const CheckoutPage = () => {
                   <input type="radio" name="payment" className="form-radio text-green-600" />
                   <span className="ml-2 text-sm font-semibold">Bizum</span>
                   <Image
-          src={`/bizumlogo.png`}
-          alt="Logo de Bizum"
-          height={30}
-          width={69}
-          className="rounded-[20px]"
-        />
+                    src={`/bizumlogo.png`}
+                    alt="Logo de Bizum"
+                    height={30}
+                    width={69}
+                    className="rounded-[20px]"
+                  />
                 </label>
               </div>
             </div>
@@ -80,23 +93,23 @@ const CheckoutPage = () => {
               <h3 className="text-lg font-semibold mb-6">Total del carrito</h3>
               <div className="flex justify-between mb-4">
                 <span className="text-sm">SUBTOTAL</span>
-                <span className="text-sm font-semibold">18,00 €</span>
+                <span className="text-sm font-semibold">€{cartSummary.subtotal}</span>
               </div>
               <div className="flex justify-between mb-4">
                 <span className="text-sm">ENVÍO</span>
-                <span className="text-sm font-semibold">GRATIS</span>
+                <span className="text-sm font-semibold">€{cartSummary.shippingCost}</span>
               </div>
               <div className="flex justify-between mb-6">
                 <span className="text-lg font-semibold">TOTAL</span>
-                <span className="text-lg font-semibold">18,00 €</span>
+                <span className="text-lg font-semibold">€{cartSummary.total}</span>
               </div>
-              <p className="text-sm text-gray-500 mb-6">Incluye 3,78€ de IVA</p>
+              <p className="text-sm text-gray-500 mb-6">Incluye IVA</p>
               <button className="w-full bg-green-900 text-white font-semibold py-2 rounded-lg hover:bg-green-800">
                 Pagar y realizar pedido
               </button>
             </div>
           </div>
-      </div>
+        </div>
       </div>
     </div>
   );
