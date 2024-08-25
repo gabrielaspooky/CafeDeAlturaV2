@@ -1,8 +1,14 @@
 "use client";
 import React from 'react';
-import { useCart } from '@/context/ProductContext';
+import { useCart } from '@/context/CartContext'; // Asegúrate de que la ruta sea correcta
 
 export default function Cards({ products }) {
+  const { addToCart } = useCart(); // Obtén la función addToCart del contexto
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
+
   return (
     <div className="grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 w-full">
       {products.map((product) => (

@@ -41,9 +41,9 @@ const ShoppingBagDrawer = () => {
             <p className="text-gray-600">No tienes productos en tu carrito.</p>
           )}
           <Link href="/shoppingBag">
-            <button className="mt-4 px-4 py-2 text-black flex items-center">
+            <button className="mt-4 px-4 py-2 text-white flex items-center">
               <ShoppingCart size={40} strokeWidth={1.25} />
-              <span className="ml-2">Ver carrito</span>
+              <span className="ml-2"></span>
             </button>
           </Link>
         </div>
