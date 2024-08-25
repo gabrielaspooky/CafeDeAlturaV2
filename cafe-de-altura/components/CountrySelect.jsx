@@ -21,8 +21,8 @@ const CountrySelect = () => {
   return (
     <Select 
       options={options} 
-      placeholder="Seleccionar País" 
-      className="form-select mt-1 block w-full"
+      placeholder="Seleccionar país" 
+      className="form-select mt-1 block w-full focus:ring-[#2A5B45]"
     />
   );
 };

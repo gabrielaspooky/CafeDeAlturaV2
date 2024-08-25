@@ -34,14 +34,31 @@ const CheckoutPage = () => {
                   <span className="ml-2 text-sm font-semibold block">Tarjeta de débito</span>
                   <span className="ml-2 text-sm text-gray-500 block">Opción estándar sin seguimiento</span>
                 </label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="w-[279px] h-[181px] flex flex-col gap-2">
+                <label className="block text-black">
+                Titular
                   <input type="text" placeholder="Nombre del titular" className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black" />
-                  <input type="text" placeholder="Número de la tarjeta" className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black" />
-                  <input type="text" placeholder="Fecha de caducidad" className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black" />
-                  <input type="text" placeholder="CVC" className="form-input mt-1 block p-2 border border-gray-300 rounded text-black" />
+                  </label>
+                  <label className="block text-black">
+                Número de la tarjeta
+                  <input type="text" placeholder="1234 1234 1234 1234" className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black" />
+                  </label>
+                  <div className="w-[279px] min-h-[55px] flex gap-6">
+                  <label className="block text-black">
+                Fecha de caducidad
+                  <input type="date" placeholder="Fecha de caducidad" className="form-input p-2 border border-gray-300 rounded text-black" />
+                  </label>
+                  <label className="block text-black">
+                CVC
+                  <input type="text" placeholder="123" className="p-2 border border-gray-300 rounded text-black" />
+                  </label>
+                  </div>
                 </div>
               </div>
-              
+              <br />
+              <br />
+              <br />
+              <br />
               <div className="border-b border-gray-300 py-4">
                 <label className="flex items-center mb-2">
                   <input type="radio" name="payment" className="form-radio accent-[#2A5B45]" />
@@ -80,10 +97,10 @@ const CheckoutPage = () => {
                 <CountrySelect />
                 <input type="text" placeholder="Población" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
                 <input type="text" placeholder="CP" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Calle" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Nº" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Piso" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Puerta" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Calle" className="w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Nº" className="w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Piso" className="p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Puerta" className="p-2 border border-gray-300 rounded text-black" />
               </div>
             </div>
           </div>
