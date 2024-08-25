@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { CreditCard, Banknote, Phone } from 'lucide-react';
 import Image from 'next/image';
+import CountrySelect from '../../../components/CountrySelect';
 
 const CheckoutPage = () => {
   const [cartSummary, setCartSummary] = useState({
@@ -74,9 +75,7 @@ const CheckoutPage = () => {
                 <input type="text" placeholder="Apellidos" className="form-input mt-1 block w-full" />
                 <input type="text" placeholder="Teléfono" className="form-input mt-1 block w-full" />
                 <input type="email" placeholder="Email" className="form-input mt-1 block w-full" />
-                <select className="form-select mt-1 block w-full">
-                  <option>Seleccionar País</option>
-                </select>
+                <CountrySelect />
                 <input type="text" placeholder="Población" className="form-input mt-1 block w-full" />
                 <input type="text" placeholder="CP" className="form-input mt-1 block w-full" />
                 <input type="text" placeholder="Calle" className="form-input mt-1 block w-full" />
