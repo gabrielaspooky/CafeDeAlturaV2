@@ -1,6 +1,5 @@
 import React from 'react';
 import { CreditCard, Banknote, Phone } from 'lucide-react';
-import CopyrightFooter from '../../../components/ui/CopyrightFooter';
 import Image from 'next/image';
 
 const CheckoutPage = () => {

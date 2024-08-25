@@ -6,7 +6,6 @@ import FAQWrapper from "./(main)/FAQsWrapper";
 import ContactForm from "./(main)/ContactForm";
 import Footer from "../../components/ui/Footer";
 import BenefitsSection from "./(main)/BenefitsSection";
-import CopyrightFooter from "../../components/ui/CopyrightFooter";
 
 
 const Home = () => {
@@ -19,7 +18,6 @@ const Home = () => {
    <FeatureSection />
     <ContactForm />
     <Footer />
-    <CopyrightFooter />
 
     </div>
   );
