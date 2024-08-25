@@ -13,14 +13,14 @@ const Buttons = ({ text, typeBtn }) => {
         return "p-2 text-white rounded bg-[#2A5B45B2] hover:bg-[#2A5B45]";
       case "white":
         return "px-6 py-3 rounded text-[#2A5B45]";
-
       default:
-        break;
+        return "px-6 py-3 bg-gray-200 rounded text-black"; // Estilo por defecto
     }
   };
+
   return (
     <a
-      className={`font-semibold, leading-4 text-[14px] ${buttonStyle()}`}
+      className={`font-semibold leading-4 text-[14px] ${buttonStyle()}`}
       href=""
     >
       {text}

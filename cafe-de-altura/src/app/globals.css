@@ -32,8 +32,3 @@ body {
   }
 }
 
-/* Tailwind Dark Mode Background Color */
-.dark-mode {
-  background-color: black;
-  color: white;
-}
