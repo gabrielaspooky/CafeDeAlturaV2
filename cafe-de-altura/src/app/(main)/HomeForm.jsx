@@ -36,23 +36,23 @@ const HomeForm = () => {
           className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
         />
       </label>
-      <label className="block">
+      <label className="block text-black">
         Email:
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded"
+          className="text-black focus:outline-none focus:ring focus:ring-[#2A5B45] block w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45]"
         />
       </label>
-      <label className="block">
+      <label className="block text-black">
         Teléfono:
         <select
           name="prefijo"
           value={formData.prefijo}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded"
+          className="block w-full mt-1 p-2 border border-gray-300 rounded text-black focus:outline-none focus:ring focus:ring-[#2A5B45]"
         >
           <option value="+1">US</option>
           {/* Agregar más opciones de prefijos según sea necesario */}
@@ -62,25 +62,25 @@ const HomeForm = () => {
           name="telefono"
           value={formData.telefono}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded"
+          className="block w-full mt-1 p-2 border border-gray-300 rounded text-black focus:outline-none focus:ring focus:ring-[#2A5B45]"
         />
       </label>
-      <label className="block">
-        ¿En qué podemos ayudarte?
+      <label className="block text-black">
         <textarea
+        placeholder='¿En qué podemos ayudarte?'
           name="mensaje"
           value={formData.mensaje}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded"
+          className="block w-full mt-1 p-2 border border-gray-300 rounded text-black focus:outline-none focus:ring focus:ring-[#2A5B45]"
         />
       </label>
-      <label className="block">
+      <label className="block text-black">
         <input
           type="checkbox"
           name="aceptaTerminos"
           checked={formData.aceptaTerminos}
           onChange={handleChange}
-          className="mr-2"
+          className="mr-2 accent-[#2A5B45]"
         />
         Acepto la Política de Privacidad y los Términos y condiciones.
       </label>

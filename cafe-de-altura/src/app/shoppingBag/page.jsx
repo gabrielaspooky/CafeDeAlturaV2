@@ -104,7 +104,7 @@ const ShoppingBag = () => {
               <h3 className="text-lg font-semibold mb-4">Seleccionar envío</h3>
               <div className="mb-4">
                 <label className="flex items-center">
-                  <input type="radio" name="shipping" className="form-radio text-green-600" checked />
+                  <input type="radio" name="shipping" className="form-radio accent-[#2A5B45]" />
                   <span className="ml-2 text-sm">Envío 5-7 días</span>
                   <span className="ml-auto text-sm font-semibold">GRATIS</span>
                 </label>
@@ -112,7 +112,7 @@ const ShoppingBag = () => {
               </div>
               <div>
                 <label className="flex items-center">
-                  <input type="radio" name="shipping" className="form-radio text-green-600" />
+                  <input type="radio" name="shipping" className="form-radio accent-[#2A5B45]" />
                   <span className="ml-2 text-sm">Envío urgente 24h</span>
                   <span className="ml-auto text-sm font-semibold">€{shippingCost.toFixed(2)}</span>
                 </label>
