@@ -4,7 +4,7 @@ import { Coffee, Phone, ShoppingBag } from "lucide-react";
 import React from "react";
 import Link from "next/link";
 import ShoppingBagDrawer from "./BagDrawer";
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingBasket } from 'lucide-react';
 
 const NavBar = () => {
   return (
@@ -48,8 +48,7 @@ const NavBar = () => {
         </Link>
         <Link href="/shoppingBag">
             <button className="mt-4 px-4 py-2 text-black flex items-center">
-              <ShoppingCart size={40} strokeWidth={1.25} />
-              <span className="ml-2">Ver carrito</span>
+              <ShoppingBasket className="ml-2 text-white" />
             </button>
           </Link>
       </div>

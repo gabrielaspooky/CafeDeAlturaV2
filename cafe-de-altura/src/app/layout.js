@@ -2,7 +2,7 @@ import { Outfit } from 'next/font/google';
 import './globals.css';
 import Navbar from '../../components/ui/Navbar';
 import { CartProvider } from '@/context/CartContext'; // Ajusta la ruta según sea necesario
-import ShoppingBagDrawer from '../../components/ui/BagDrawer';
+
 
 const inter = Outfit({ subsets: ['latin'] });
 
@@ -18,7 +18,6 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <Navbar />
           {children}
-          <ShoppingBagDrawer />
         </CartProvider>
       </body>
     </html>

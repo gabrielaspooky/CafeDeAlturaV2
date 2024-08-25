@@ -1,7 +1,8 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from 'react';
 import { ClipboardCheck } from "lucide-react";
 import Link from "next/link";
+import CopyrightFooter from '../../../components/ui/CopyrightFooter';
 
 const Success = () => {
   const [cart, setCart] = useState([]);
@@ -11,6 +12,12 @@ const Success = () => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setCart(savedCart);
   }, []);
+
+  // Función para limpiar el localStorage y redirigir
+  const handleBackToStore = () => {
+    localStorage.removeItem('cart'); // Limpiar el carrito del localStorage
+    window.location.href = '/shop'; // Redirigir al usuario a la tienda
+  };
 
   // Calcula el subtotal y total
   const subtotal = cart.reduce((total, product) => total + (product.price || 0), 0);
@@ -69,9 +76,13 @@ const Success = () => {
         </div>
         
         <div className="text-center mt-8">
-          <Link href="/shop" className="bg-[#2A5B45] hover:bg-[#505050] text-white text-sm py-2 px-4 rounded-lg">
+          <button 
+            onClick={handleBackToStore} 
+            className="bg-[#2A5B45] hover:bg-[#505050] text-white text-sm py-2 px-4 rounded-lg"
+          >
             Volver a la tienda
-          </Link>
+          </button>
+          <CopyrightFooter />
         </div>
       </div>
     </div>
