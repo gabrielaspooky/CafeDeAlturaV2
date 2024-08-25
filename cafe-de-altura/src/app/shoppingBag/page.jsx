@@ -1,10 +1,8 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { MinusCircle, PlusCircle } from 'lucide-react';
 import Link from 'next/link';
-import CopyrightFooter from '../../../components/ui/CopyrightFooter';
-import Footer from '../../../components/ui/Footer';
 
 const ShoppingBag = () => {
   const [cart, setCart] = useState([]);
@@ -12,11 +10,31 @@ const ShoppingBag = () => {
   useEffect(() => {
     // Leer el carrito desde localStorage
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCart(savedCart);
+    // Asegurarse de que cada producto tenga una propiedad 'quantity'
+    const initializedCart = savedCart.map(product => ({
+      ...product,
+      quantity: product.quantity || 1 // Asignar cantidad 1 si no existe
+    }));
+    setCart(initializedCart);
   }, []);
 
+  const updateQuantity = (productId, change) => {
+    // Actualizar la cantidad del producto
+    const updatedCart = cart.map(product => {
+      if (product._id === productId) {
+        const newQuantity = Math.max(1, product.quantity + change); // Asegúrate de que la cantidad no sea menor a 1
+        return { ...product, quantity: newQuantity };
+      }
+      return product;
+    });
+
+    // Guardar el carrito actualizado en el estado y en localStorage
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
   // Calcula el subtotal y total
-  const subtotal = cart.reduce((total, product) => total + (product.price || 0), 0);
+  const subtotal = cart.reduce((total, product) => total + (product.price || 0) * (product.quantity || 1), 0);
   const shippingCost = 9.00; // Costo de envío urgente, puedes ajustar según la opción seleccionada
   const total = subtotal + shippingCost;
 
@@ -34,15 +52,22 @@ const ShoppingBag = () => {
             {cart.length === 0 ? (
               <p className="text-center text-gray-500">Tu carrito está vacío.</p>
             ) : (
-              cart.map((product, index) => (
-                <div key={index} className="border-b border-gray-300 py-4">
+              cart.map((product) => (
+                <div key={product._id} className="border-b border-gray-300 py-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <button className="text-gray-600">
+                      <button 
+                        className="text-gray-600" 
+                        onClick={() => updateQuantity(product._id, -1)}
+                        disabled={product.quantity <= 1} // Evitar que la cantidad sea menor que 1
+                      >
                         <MinusCircle className="h-6 w-6" />
                       </button>
-                      <span className="mx-2">1</span>
-                      <button className="text-gray-600">
+                      <span className="mx-2">{product.quantity}</span> {/* Mostrar la cantidad actual */}
+                      <button 
+                        className="text-gray-600" 
+                        onClick={() => updateQuantity(product._id, 1)}
+                      >
                         <PlusCircle className="h-6 w-6" />
                       </button>
                     </div>
@@ -55,12 +80,10 @@ const ShoppingBag = () => {
                       />
                       <div className="ml-4">
                         <p className="text-sm font-medium">{product.brand}</p>
-                        <p className="text-sm text-gray-500">
-                        Paquete de café, 250 gr
-                          </p>
+                        <p className="text-sm text-gray-500">Paquete de café, 250 gr</p>
                       </div>
                     </div>
-                    <p className="font-semibold">€{typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
+                    <p className="font-semibold">€{((product.price || 0) * (product.quantity || 1)).toFixed(2)}</p>
                   </div>
                 </div>
               ))
