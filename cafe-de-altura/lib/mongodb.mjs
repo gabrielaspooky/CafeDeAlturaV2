@@ -19,7 +19,7 @@ export async function dbConnect() {
 
   try {
     const client = await mongoose.connect(uri, {
-      useNewUrlParser: true,
+
     });
     cachedDb = client.connection.db;
     console.log("Connected to MongoDB successfully!");
