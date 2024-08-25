@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { CreditCard, Banknote, Phone } from 'lucide-react';
 import Image from 'next/image';
 import CountrySelect from '../../../components/CountrySelect';
 
@@ -31,31 +30,34 @@ const CheckoutPage = () => {
               
               <div className="border-b border-gray-300 py-4">
                 <label className="flex items-center mb-4">
-                  <input type="radio" name="payment" className="form-radio text-green-600" checked />
-                  <CreditCard className="h-6 w-6 text-gray-600 ml-2" />
-                  <span className="ml-2 text-sm font-semibold">Tarjeta de débito</span>
-                  <span className="ml-2 text-sm text-gray-500">Opción estándar sin seguimiento</span>
+                  <input type="radio" name="payment" className="form-radio accent-[#2A5B45]" />
+                  <span className="ml-2 text-sm font-semibold block">Tarjeta de débito</span>
+                  <span className="ml-2 text-sm text-gray-500 block">Opción estándar sin seguimiento</span>
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input type="text" placeholder="Nombre del titular" className="form-input mt-1 block w-full" />
-                  <input type="text" placeholder="Número de la tarjeta" className="form-input mt-1 block w-full" />
-                  <input type="text" placeholder="Fecha de caducidad" className="form-input mt-1 block w-full" />
-                  <input type="text" placeholder="CVC" className="form-input mt-1 block w-full" />
+                  <input type="text" placeholder="Nombre del titular" className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black" />
+                  <input type="text" placeholder="Número de la tarjeta" className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black" />
+                  <input type="text" placeholder="Fecha de caducidad" className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black" />
+                  <input type="text" placeholder="CVC" className="form-input mt-1 block p-2 border border-gray-300 rounded text-black" />
                 </div>
               </div>
               
               <div className="border-b border-gray-300 py-4">
                 <label className="flex items-center mb-2">
-                  <input type="radio" name="payment" className="form-radio text-green-600" />
-                  <Banknote className="h-6 w-6 text-gray-600 ml-2" />
-                  <span className="ml-2 text-sm font-semibold">Transferencia bancaria</span>
+                  <input type="radio" name="payment" className="form-radio accent-[#2A5B45]" />
+                  
+                  <b className="ml-2 text-sm font-semibold">
+                  Transferencia bancaria a la cuenta ES12 1234 1234 123457890
+                  <br />
+                  </b>
                 </label>
-                <p className="text-sm text-gray-500 ml-8">Será necesario recibir el comprobante de la transferencia para preparar tu pedido</p>
+                <p className="text-sm text-gray-500 ml-8">
+              Será necesario recibir el comprobante de la transferencia para preparar tu pedido</p>
               </div>
               
               <div className="py-4">
                 <label className="flex items-center mb-2">
-                  <input type="radio" name="payment" className="form-radio text-green-600" />
+                  <input type="radio" name="payment" className="form-radio accent-[#2A5B45]" />
                   <span className="ml-2 text-sm font-semibold">Bizum</span>
                   <Image
                     src={`/bizumlogo.png`}
@@ -71,17 +73,17 @@ const CheckoutPage = () => {
             <div className="mb-8">
               <h2 className="text-lg font-semibold mb-4">Dirección de envío</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" placeholder="Nombre" className="form-input mt-1 block w-full" />
-                <input type="text" placeholder="Apellidos" className="form-input mt-1 block w-full" />
-                <input type="text" placeholder="Teléfono" className="form-input mt-1 block w-full" />
-                <input type="email" placeholder="Email" className="form-input mt-1 block w-full" />
+                <input type="text" placeholder="Nombre" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Apellidos" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Teléfono" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="email" placeholder="Email" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
                 <CountrySelect />
-                <input type="text" placeholder="Población" className="form-input mt-1 block w-full" />
-                <input type="text" placeholder="CP" className="form-input mt-1 block w-full" />
-                <input type="text" placeholder="Calle" className="form-input mt-1 block w-full" />
-                <input type="text" placeholder="Nº" className="form-input mt-1 block w-full" />
-                <input type="text" placeholder="Piso" className="form-input mt-1 block w-full" />
-                <input type="text" placeholder="Puerta" className="form-input mt-1 block w-full" />
+                <input type="text" placeholder="Población" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="CP" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Calle" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Nº" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Piso" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
+                <input type="text" placeholder="Puerta" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
               </div>
             </div>
           </div>
@@ -103,7 +105,9 @@ const CheckoutPage = () => {
                 <span className="text-lg font-semibold">€{cartSummary.total}</span>
               </div>
               <p className="text-sm text-gray-500 mb-6">Incluye IVA</p>
-              <button className="w-full bg-green-900 text-white font-semibold py-2 rounded-lg hover:bg-green-800">
+              <button 
+              type='submit'
+              className="w-full bg-green-900 text-white font-semibold py-2 rounded-lg hover:bg-green-800">
                 Pagar y realizar pedido
               </button>
             </div>
