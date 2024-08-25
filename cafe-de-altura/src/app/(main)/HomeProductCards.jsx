@@ -10,7 +10,10 @@ const ProductCards = () => (
     <h2 className="text-2xl font-medium text-[#2A5B45] leading-7 w-[120px]">Novedades</h2>
     <div className="flex max-w-[1200px] min-h-[391.39px] gap-6 justify-between items-center">
       <ProductFetcher>
-        {({ products }) => <Cards products={products.slice(0, 4)} />}
+        {({ products }) => (
+          // Verifica que `products` sea un array y esté definido
+          <Cards products={Array.isArray(products) ? products.slice(0, 4) : []} />
+        )}
       </ProductFetcher>
     </div>
     <Link className="flex justify-between items-center gap-4 text-sm font-semibold text-black" href="/shop">

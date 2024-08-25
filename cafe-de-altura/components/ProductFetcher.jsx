@@ -1,4 +1,3 @@
-// components/ProductFetcher.js
 "use client"
 import React, { useEffect, useState } from 'react';
 import Cards from './ui/CardProduct';
