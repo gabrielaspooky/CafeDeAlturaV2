@@ -19,7 +19,7 @@ const Toast = ({ show, duration = 3000 }) => {
   if (!visible) return null;
 
   return (
-    <div className="fixed top-4 right-4 bg-green-500 text-black px-4 py-2 rounded-lg shadow-lg flex items-center z-50">
+    <div className="fixed top-20 right-5 bg-[#2A5B45B2] text-white px-4 py-2 rounded-lg shadow-lg flex items-center z-50">
       <CheckCircle className="h-6 w-6 mr-2" />
       <span>¡Producto añadido exitosamente!</span>
     </div>

@@ -82,7 +82,6 @@ const Success = () => {
           >
             Volver a la tienda
           </button>
-          <CopyrightFooter />
         </div>
       </div>
     </div>

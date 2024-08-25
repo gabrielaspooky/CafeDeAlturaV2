@@ -15,7 +15,6 @@ const Shop = () => {
       </ProductFetcher>
       <BenefitsSection />
       <Footer />
-      <CopyrightFooter />
     </div>
   );
 };

@@ -112,7 +112,6 @@ const ShoppingBag = () => {
           </div>
         </div>
       </div>
-      <CopyrightFooter />
     </div>
   );
 };

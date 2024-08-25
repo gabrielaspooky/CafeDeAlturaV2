@@ -99,7 +99,6 @@ const CheckoutPage = () => {
           </div>
       </div>
       </div>
-      <CopyrightFooter />
     </div>
   );
 };
