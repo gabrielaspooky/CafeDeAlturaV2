@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { ClipboardCheck } from "lucide-react";
-import Link from "next/link";
-import CopyrightFooter from '../../../components/ui/CopyrightFooter';
+import Image from "next/image";
+
 
 const Success = () => {
   const [cart, setCart] = useState([]);
@@ -26,10 +26,11 @@ const Success = () => {
 
   return (
     <div className="bg-white min-h-screen py-8 text-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-col text-center">
         <div className="text-center">
-          <ClipboardCheck className="mx-auto h-16 w-16 text-green-600" />
-          <p className="text-lg font-semibold mt-4">
+        <Image src={`/clipboard.svg`} alt="Check icon" width={64} height={64} />
+          <h2 className="text-[#2A5B45] text-subtitle text-center font-bold">El pedido ha sido realizado con éxito</h2>
+          <p className="flex-col font-normal text-[14px] leading-[16px] text-center mt-4 w-[346px] h-[48px]">
             El pedido #12387 se encuentra en preparación. 
             Lo recibirás dentro de las fechas acordadas en tu envío. 
             Hemos enviado un ticket a tu correo electrónico.
@@ -38,8 +39,8 @@ const Success = () => {
         
         {/* Cart Summary Section */}
         <div className="lg:w-1/2 w-full mx-auto mt-8">
-          <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
-            <h3 className="text-lg font-semibold mb-6">Resumen del pedido</h3>
+          <div className="border border-gray-200 rounded-lg p-6 bg-[#F7F5F3] flex-col">
+            <h3 className="text-lg font-semibold mb-6">Tu pedido</h3>
             {cart.map((product, index) => (
               <div key={index} className="flex justify-between mb-4">
                 <div className="flex items-center">
@@ -71,7 +72,7 @@ const Success = () => {
               <span className="text-lg font-semibold">TOTAL</span>
               <span className="text-lg font-semibold">€{total.toFixed(2)}</span>
             </div>
-            <p className="text-sm text-gray-500 mt-6">Incluye IVA</p>
+            <p className="text-sm text-gray-500 mt-6">Incluye 3,78€ de IVA</p>
           </div>
         </div>
         
