@@ -1,4 +1,3 @@
-// seedProducts.mjs
 import { connectToDatabase } from './lib/mongodb.mjs';
 
 const products = [

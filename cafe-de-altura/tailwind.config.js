@@ -13,7 +13,7 @@ module.exports = {
       center: true, 
       padding: '2rem', 
       screens: {
-        '2xl': '1400px', // Configura el tamaño máximo para pantallas extra grandes
+        '2xl': '1400px', 
       },
     },
     extend: {

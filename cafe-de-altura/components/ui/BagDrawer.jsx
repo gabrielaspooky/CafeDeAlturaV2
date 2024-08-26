@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { useCart } from "../../src/context/CartContext" // Ajusta la ruta según la ubicación de tu archivo
+import { useCart } from "../../src/context/CartContext";
 import Link from 'next/link';
 import { ShoppingBag, ShoppingCart } from 'lucide-react';
 

@@ -54,8 +54,9 @@ const HomeForm = () => {
           onChange={handleChange}
           className="block w-full mt-1 p-2 border border-gray-300 rounded text-black focus:outline-none focus:ring focus:ring-[#2A5B45]"
         >
+          <option value="+34">ES</option>
           <option value="+1">US</option>
-          {/* Agregar más opciones de prefijos según sea necesario */}
+          
         </select>
         <input
           type="tel"

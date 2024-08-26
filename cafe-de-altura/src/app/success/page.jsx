@@ -13,15 +13,15 @@ const Success = () => {
     setCart(savedCart);
   }, []);
 
-  // Función para limpiar el localStorage y redirigir
+
   const handleBackToStore = () => {
-    localStorage.removeItem('cart'); // Limpiar el carrito del localStorage
-    window.location.href = '/shop'; // Redirigir al usuario a la tienda
+    localStorage.removeItem('cart'); 
+    window.location.href = '/shop'; 
   };
 
-  // Calcula el subtotal y total
+  
   const subtotal = cart.reduce((total, product) => total + (product.price || 0), 0);
-  const shippingCost = 0.00; // Assuming free shipping as shown in your image
+  const shippingCost = 0.00; 
   const total = subtotal + shippingCost;
 
   return (

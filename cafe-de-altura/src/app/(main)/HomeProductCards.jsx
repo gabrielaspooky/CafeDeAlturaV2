@@ -11,7 +11,7 @@ const ProductCards = () => (
     <div className="flex max-w-[1200px] min-h-[391.39px] gap-6 justify-between items-center">
       <ProductFetcher>
         {({ products }) => (
-          // Verifica que `products` sea un array y esté definido
+       
           <Cards products={Array.isArray(products) ? products.slice(0, 4) : []} />
         )}
       </ProductFetcher>

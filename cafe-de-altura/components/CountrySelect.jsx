@@ -11,7 +11,7 @@ const CountrySelect = () => {
       .then(response => response.json())
       .then(data => {
         const countries = data.map(country => ({
-          value: country.cca2, // You can use cca3 for 3-letter codes
+          value: country.cca2, 
           label: country.name.common,
         }));
         setOptions(countries);
