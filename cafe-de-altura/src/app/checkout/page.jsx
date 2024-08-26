@@ -124,6 +124,7 @@ const CheckoutPage = () => {
               <p className="text-sm text-gray-500 mb-6">Incluye IVA</p>
               <button 
               type='submit'
+              href="/success"
               className="w-full bg-green-900 text-white font-semibold py-2 rounded-lg hover:bg-green-800">
                 Pagar y realizar pedido
               </button>
