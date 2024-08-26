@@ -51,9 +51,9 @@ const ShoppingBag = () => {
   const handleShippingChange = (shippingOption) => {
     setSelectedShipping(shippingOption);
     if (shippingOption === "urgent") {
-      setShippingCost(9.00); // El costo de envío urgente es de 9 euros
+      setShippingCost(9.00); 
     } else {
-      setShippingCost(0); // Envío estándar gratuito
+      setShippingCost(0); 
     }
   };
 

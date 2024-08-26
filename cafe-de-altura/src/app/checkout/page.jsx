@@ -2,25 +2,56 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import CountrySelect from '../../../components/CountrySelect';
+import Link from 'next/link';
 
 const CheckoutPage = () => {
   const [cartSummary, setCartSummary] = useState({
     subtotal: '0.00',
     shippingCost: '0.00',
-    total: '0.00'
+    total: '0.00',
   });
 
+  const [formData, setFormData] = useState({
+    nombre: '',
+    apellidos: '',
+    telefono: '',
+    email: '',
+    poblacion: '',
+    cp: '',
+    calle: '',
+    numero: '',
+    piso: '',
+    puerta: '',
+    fechaCaducidad: '',
+    titular: '',
+    numeroTarjeta: '',
+    cvc: '',
+  });
+
+  const [isFormComplete, setIsFormComplete] = useState(false);
+
   useEffect(() => {
-    // Leer el resumen del carrito desde localStorage
     const savedSummary = JSON.parse(localStorage.getItem('cartSummary')) || {};
     setCartSummary(savedSummary);
   }, []);
+
+  useEffect(() => {
+    const isComplete = Object.values(formData).every(field => field.trim() !== '');
+    setIsFormComplete(isComplete);
+  }, [formData]);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <div className="bg-white min-h-screen py-8 text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-2xl font-semibold text-center text-green-900 mb-8">Checkout</h1>
-        
+
         <div className="flex flex-col lg:flex-row justify-between">
           
           {/* Left Section - Payment and Shipping */}
@@ -35,72 +66,141 @@ const CheckoutPage = () => {
                   <span className="ml-2 text-sm text-gray-500 block">Opción estándar sin seguimiento</span>
                 </label>
                 <div className="w-[279px] h-[181px] flex flex-col gap-2">
-                <label className="block text-black">
-                Titular
-                  <input type="text" placeholder="Nombre del titular" className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black" />
+                  <label className="block text-black">
+                    Titular
+                    <input
+                      type="text"
+                      name="titular"
+                      placeholder="Nombre del titular"
+                      className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black"
+                      value={formData.titular}
+                      onChange={handleChange}
+                    />
                   </label>
                   <label className="block text-black">
-                Número de la tarjeta
-                  <input type="text" placeholder="1234 1234 1234 1234" className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black" />
+                    Número de la tarjeta
+                    <input
+                      type="text"
+                      name="numeroTarjeta"
+                      placeholder="1234 1234 1234 1234"
+                      className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black"
+                      value={formData.numeroTarjeta}
+                      onChange={handleChange}
+                    />
                   </label>
                   <div className="w-[279px] min-h-[55px] flex gap-6">
-                  <label className="block text-black">
-                Fecha de caducidad
-                  <input type="date" placeholder="Fecha de caducidad" className="form-input p-2 border border-gray-300 rounded text-black" />
-                  </label>
-                  <label className="block text-black">
-                CVC
-                  <input type="text" placeholder="123" className="p-2 border border-gray-300 rounded text-black" />
-                  </label>
+                    <label className="block text-black">
+                      Fecha de caducidad
+                      <input
+                        type="date"
+                        name="fechaCaducidad"
+                        className="form-input p-2 border border-gray-300 rounded text-black"
+                        value={formData.fechaCaducidad}
+                        onChange={handleChange}
+                      />
+                    </label>
+                    <label className="block text-black">
+                      CVC
+                      <input
+                        type="text"
+                        name="cvc"
+                        placeholder="123"
+                        className="p-2 border border-gray-300 rounded text-black"
+                        value={formData.cvc}
+                        onChange={handleChange}
+                      />
+                    </label>
                   </div>
                 </div>
               </div>
-              <br />
-              <br />
-              <br />
-              <br />
-              <div className="border-b border-gray-300 py-4">
-                <label className="flex items-center mb-2">
-                  <input type="radio" name="payment" className="form-radio accent-[#2A5B45]" />
-                  
-                  <b className="ml-2 text-sm font-semibold">
-                  Transferencia bancaria a la cuenta ES12 1234 1234 123457890
-                  <br />
-                  </b>
-                </label>
-                <p className="text-sm text-gray-500 ml-8">
-              Será necesario recibir el comprobante de la transferencia para preparar tu pedido</p>
-              </div>
               
-              <div className="py-4">
-                <label className="flex items-center mb-2">
-                  <input type="radio" name="payment" className="form-radio accent-[#2A5B45]" />
-                  <span className="ml-2 text-sm font-semibold">Bizum</span>
-                  <Image
-                    src={`/bizumlogo.png`}
-                    alt="Logo de Bizum"
-                    height={30}
-                    width={69}
-                    className="rounded-[20px]"
+              {/* Otra sección de pago y dirección de envío */}
+              
+              <div className="mb-8">
+                <h2 className="text-lg font-semibold mb-4">Dirección de envío</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="nombre"
+                    placeholder="Nombre"
+                    className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
+                    value={formData.nombre}
+                    onChange={handleChange}
                   />
-                </label>
-              </div>
-            </div>
-
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-4">Dirección de envío</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" placeholder="Nombre" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Apellidos" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Teléfono" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="email" placeholder="Email" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <CountrySelect />
-                <input type="text" placeholder="Población" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="CP" className="block w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Calle" className="w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Nº" className="w-full mt-1 p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Piso" className="p-2 border border-gray-300 rounded text-black" />
-                <input type="text" placeholder="Puerta" className="p-2 border border-gray-300 rounded text-black" />
+                  <input
+                    type="text"
+                    name="apellidos"
+                    placeholder="Apellidos"
+                    className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
+                    value={formData.apellidos}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="telefono"
+                    placeholder="Teléfono"
+                    className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
+                    value={formData.telefono}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                  <CountrySelect />
+                  <input
+                    type="text"
+                    name="poblacion"
+                    placeholder="Población"
+                    className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
+                    value={formData.poblacion}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="cp"
+                    placeholder="CP"
+                    className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
+                    value={formData.cp}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="calle"
+                    placeholder="Calle"
+                    className="w-full mt-1 p-2 border border-gray-300 rounded text-black"
+                    value={formData.calle}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="numero"
+                    placeholder="Nº"
+                    className="w-full mt-1 p-2 border border-gray-300 rounded text-black"
+                    value={formData.numero}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="piso"
+                    placeholder="Piso"
+                    className="p-2 border border-gray-300 rounded text-black"
+                    value={formData.piso}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="puerta"
+                    placeholder="Puerta"
+                    className="p-2 border border-gray-300 rounded text-black"
+                    value={formData.puerta}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -122,12 +222,14 @@ const CheckoutPage = () => {
                 <span className="text-lg font-semibold">€{cartSummary.total}</span>
               </div>
               <p className="text-sm text-gray-500 mb-6">Incluye IVA</p>
-              <button 
-              type='submit'
-              href="/success"
-              className="w-full bg-green-900 text-white font-semibold py-2 rounded-lg hover:bg-green-800">
+              <Link
+                href={isFormComplete ? "/success" : "#"}
+                className={`bg-[#2A5B45] hover:bg-[#505050] text-white text-sm py-2 px-4 rounded-lg ${
+                  !isFormComplete ? "opacity-50 cursor-not-allowed pointer-events-none" : ""
+                }`}
+              >
                 Pagar y realizar pedido
-              </button>
+              </Link>
             </div>
           </div>
         </div>
