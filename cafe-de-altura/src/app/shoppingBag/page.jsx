@@ -10,8 +10,17 @@ const ShoppingBag = () => {
   const [selectedShipping, setSelectedShipping] = useState("");
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(savedCart);
+    const fetchCart = () => {
+      const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+      setCart(savedCart);
+    };
+
+    fetchCart();
+
+    const handleStorageChange = () => fetchCart();
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
   useEffect(() => {
@@ -34,15 +43,17 @@ const ShoppingBag = () => {
   }, [cart, shippingCost]);
 
   const updateQuantity = (productId, change) => {
-    const updatedCart = cart.map((product) => {
+    const updatedCart = cart.reduce((acc, product) => {
       if (product._id === productId) {
-        const newQuantity = Math.max(1, (parseInt(product.quantity) || 1) + change);
-        return { ...product, quantity: newQuantity };
+        const newQuantity = Math.max(0, (parseInt(product.quantity) || 1) + change);
+        if (newQuantity > 0) {
+          acc.push({ ...product, quantity: newQuantity });
+        }
+      } else {
+        acc.push(product);
       }
-      return product;
-    });
-
-    // Update cart and localStorage
+      return acc;
+    }, []);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
@@ -68,7 +79,7 @@ const ShoppingBag = () => {
         </h1>
 
         <div className="flex flex-col lg:flex-row justify-between">
-          {/* Products Section */}
+          {/* Productos */}
           <div className="lg:w-3/4 w-full">
             <h2 className="text-lg font-semibold mb-4">Productos</h2>
 
@@ -86,7 +97,7 @@ const ShoppingBag = () => {
                       >
                         <MinusCircle className="h-6 w-6" />
                       </button>
-                      <span className="mx-2">{parseInt(product.quantity) || 1}</span>
+                      <span className="mx-2">{parseInt(product.quantity)}</span>
                       <button
                         className="text-gray-600"
                         onClick={() => updateQuantity(product._id, 1)}
@@ -151,7 +162,7 @@ const ShoppingBag = () => {
             </div>
           </div>
 
-          {/* Cart Summary Section */}
+          {/* Resumen del carrito */}
           <div className="lg:w-1/4 w-full lg:ml-8 mt-8 lg:mt-0">
             <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
               <h3 className="text-lg font-semibold mb-6">Total del carrito</h3>
@@ -190,3 +201,4 @@ const ShoppingBag = () => {
 };
 
 export default ShoppingBag;
+
