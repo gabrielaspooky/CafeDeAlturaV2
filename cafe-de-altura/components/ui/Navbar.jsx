@@ -1,12 +1,16 @@
 'use client'
 
-import { Coffee, Phone, ShoppingBag } from "lucide-react";
-import React from "react";
-import Link from "next/link";
-import ShoppingBagDrawer from "./BagDrawer";
-import { ShoppingBasket } from 'lucide-react';
+import React, { useState } from 'react';
+import { Coffee, Phone, ShoppingBag } from 'lucide-react';
+import Link from 'next/link';
+import ShoppingBagDrawer from './BagDrawer'; // Asegúrate de que el nombre del archivo sea correcto
 
 const NavBar = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleOpenDrawer = () => setIsDrawerOpen(true);
+  const handleCloseDrawer = () => setIsDrawerOpen(false);
+
   return (
     <nav className="top-0 bg-[#2B2A2B] relative z-50 h-12 flex justify-between items-center px-8 text-[#FFFFFF] w-full">
       {/* Logo Section */}
@@ -46,12 +50,18 @@ const NavBar = () => {
         <Link href="/login" className="bg-[#3C3C3C] hover:bg-[#505050] text-white text-sm py-1 px-3 rounded-md">
           Iniciar sesión
         </Link>
-        <Link href="/shoppingBag">
-            <button className="mt-4 px-4 py-2 text-black flex items-center">
-            <ShoppingBagDrawer /> 
-            </button>
-          </Link>
+        
+        {/* Shopping Bag Button */}
+        <button
+          className="mt-4 px-4 py-2 text-white flex items-center"
+          onClick={handleOpenDrawer}
+        >
+          <ShoppingBag className="w-5 h-5" />
+        </button>
       </div>
+
+      {/* Shopping Bag Drawer */}
+      {isDrawerOpen && <ShoppingBagDrawer onClose={handleCloseDrawer} />}
     </nav>
   );
 };
