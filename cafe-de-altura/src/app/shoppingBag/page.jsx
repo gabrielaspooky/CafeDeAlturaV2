@@ -164,8 +164,9 @@ const ShoppingBag = () => {
 
           {/* Resumen del carrito */}
           <div className="lg:w-1/4 w-full lg:ml-8 mt-8 lg:mt-0">
-            <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+            <div className="p-6 bg-[#F7F5F3] w-[384px] h-[280px]">
               <h3 className="text-lg font-semibold mb-6">Total del carrito</h3>
+            
               <div className="flex justify-between mb-4">
                 <span className="text-sm">SUBTOTAL</span>
                 <span className="text-sm font-semibold">€{subtotal.toFixed(2)}</span>
@@ -178,17 +179,17 @@ const ShoppingBag = () => {
                 <span className="text-lg font-semibold">TOTAL</span>
                 <span className="text-lg font-semibold">€{total.toFixed(2)}</span>
               </div>
-              <p className="text-sm text-gray-500 mb-6">Incluye 3,78€ de IVA</p>
+              <p className="text-sm text-gray-500 mb-6 justify-end flex">Incluye 3,78€ de IVA</p>
               <Link
                 href="/checkout"
                 className={`bg-[#2A5B45] hover:bg-[#505050] text-white text-sm py-2 px-4 rounded-lg ${!selectedShipping && "opacity-50 cursor-not-allowed"}`}
                 onClick={(e) => !selectedShipping && e.preventDefault()} // Evitar que se haga click si no hay envío seleccionado
               >
-                Ir al Checkout
+                Ir al checkout
               </Link>
               <Link
                 href="/shop"
-                className="flex text-center text-green-900 mt-4 justify-between"
+                className="text-green-900 mt-4 justify-end gap-4 font-bold"
               >
                 Seguir comprando
               </Link>

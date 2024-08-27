@@ -21,7 +21,7 @@ const NavBar = () => {
     <nav className="top-0 bg-[#2B2A2B] relative z-50 h-12 flex justify-between items-center px-8 text-[#FFFFFF] w-full">
       {/* Logo Section */}
       <div className="flex items-center gap-1">
-        <p className="text-lg font-semibold">cafedealtura.com</p>
+        <p className="text-lg">cafedealtura.com</p>
         <Coffee className="w-5 h-5" />
       </div>
 
