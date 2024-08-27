@@ -1,41 +1,79 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ShoppingBag, ShoppingCart } from 'lucide-react';
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { X } from "lucide-react"; 
 
-const ShoppingBagDrawer = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const ShoppingBagDrawer = ({ onClose }) => {
+  const [cart, setCart] = useState([]);
+  const drawerRef = useRef(null);
+
+  useEffect(() => {
+    const fetchCart = () => {
+      const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+      setCart(savedCart);
+    };
+
+    fetchCart();
+
+    const handleStorageChange = () => fetchCart();
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (drawerRef.current && !drawerRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [onClose]);
 
   return (
-    <div className="relative z-40"> {/* Ajusta el z-index aquí */}
-      {/* Shopping Bag Icon */}
-      <div 
-        onMouseEnter={() => setIsOpen(true)} 
-        onMouseLeave={() => setIsOpen(false)}
+    <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 z-50">
+      <div
+        ref={drawerRef}
+        className="fixed top-0 right-0 w-80 bg-white shadow-lg p-4 h-full overflow-y-auto"
       >
-        <Link href="/shoppingBag">
-          <ShoppingBag className="w-6 h-6 cursor-pointer" />
-        </Link>
-      </div>
-
-      {/* Drawer */}
-      {isOpen && (
-        <div 
-          className="absolute right-0 top-0 mt-2 w-64 bg-white shadow-lg rounded-lg p-4 z-50"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
+        <button
+          className="absolute top-2 right-2"
+          onClick={onClose}
         >
-          <h3 className="text-lg font-semibold mb-2 text-black">Tu carrito</h3>
-          <p className="text-gray-600">No tienes productos en tu carrito.</p>
-          <Link href="/shoppingBag">
-            <button className="mt-4 px-4 py-2 text-black flex items-center">
-              <ShoppingCart size={40} strokeWidth={1.25} />
-              <span className="ml-2">Ver carrito</span>
-            </button>
-          </Link>
+          <X className="h-6 w-6 text-black" />
+        </button>
+        <h1 className="text-2xl font-semibold text-center text-black mb-8">
+          Cesta ({cart.length})
+        </h1>
+
+        {/* Productos */}
+        <div className="flex flex-col items-center">
+          {cart.length === 0 ? (
+            <p className="text-center text-black">Tu carrito está vacío.</p>
+          ) : (
+            cart.map((product) => (
+              <div key={product._id} className="flex items-center mb-4">
+                <Image
+                  src={product.img_url}
+                  alt={product.brand}
+                  width={50}
+                  height={50}
+                  className="rounded"
+                />
+                <div className="ml-4 flex flex-col">
+                  <span className="text-lg text-black">{product.brand}</span>
+                  <span className="text-black">Unidades{product.quantity}</span>
+                </div>
+              </div>
+            ))
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
 export default ShoppingBagDrawer;
+
