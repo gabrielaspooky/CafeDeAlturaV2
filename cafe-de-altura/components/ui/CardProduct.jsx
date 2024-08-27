@@ -12,12 +12,28 @@ export default function Cards({ products }) {
   }, []);
 
   const handleAddToCart = (product) => {
-    const newCart = [...cart, product];
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
-    
+    // Obtén el carrito actual desde el localStorage
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Verifica si el producto ya existe en el carrito
+    const productIndex = savedCart.findIndex(item => item._id === product._id);
+
+    let updatedCart;
+    if (productIndex !== -1) {
+      // Si el producto ya existe, actualiza su cantidad
+      updatedCart = [...savedCart];
+      updatedCart[productIndex].quantity = (updatedCart[productIndex].quantity || 1) + 1;
+    } else {
+      // Si el producto no existe, agrégalo con cantidad 1
+      updatedCart = [...savedCart, { ...product, quantity: 1 }];
+    }
+
+    // Actualiza el estado del carrito y localStorage
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+    // Muestra el toast
     setShowToast(true);
-    
     setTimeout(() => {
       setShowToast(false);
     }, 3000);

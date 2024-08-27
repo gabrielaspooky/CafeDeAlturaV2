@@ -32,6 +32,9 @@ const ShoppingBagDrawer = ({ onClose }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
 
+  // Calcular el total de unidades en el carrito
+  const totalUnits = cart.reduce((sum, product) => sum + (parseInt(product.quantity) || 1), 0);
+
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 z-50">
       <div
@@ -45,7 +48,7 @@ const ShoppingBagDrawer = ({ onClose }) => {
           <X className="h-6 w-6 text-black" />
         </button>
         <h1 className="text-2xl font-semibold text-center text-black mb-8">
-          Cesta ({cart.length})
+          Cesta ({totalUnits})
         </h1>
 
         {/* Productos */}
@@ -64,7 +67,8 @@ const ShoppingBagDrawer = ({ onClose }) => {
                 />
                 <div className="ml-4 flex flex-col">
                   <span className="text-lg text-black">{product.brand}</span>
-                  <span className="text-black">Unidades{product.quantity}</span>
+                  <span className="text-black">Unidades: {parseInt(product.quantity) || 1}</span>
+                  <hr />
                 </div>
               </div>
             ))
@@ -76,4 +80,3 @@ const ShoppingBagDrawer = ({ onClose }) => {
 };
 
 export default ShoppingBagDrawer;
-
