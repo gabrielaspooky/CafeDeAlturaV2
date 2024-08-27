@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Coffee, Phone, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
-import ShoppingBagDrawer from './BagDrawer'; // Asegúrate de que el nombre del archivo sea correcto
+import ShoppingBagDrawer from './BagDrawer'; 
 import { useRouter } from 'next/navigation';
 
 const NavBar = () => {
@@ -12,7 +12,7 @@ const NavBar = () => {
 
   const handleOpenDrawerAndNavigate = () => {
     setIsDrawerOpen(true);
-    router.push('/shoppingBag'); // Navega a la página de la bolsa de compras
+    router.push('/shoppingBag'); 
   };
 
   const handleCloseDrawer = () => setIsDrawerOpen(false);
