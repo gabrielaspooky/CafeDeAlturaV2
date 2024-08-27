@@ -6,7 +6,7 @@ const HomeForm = () => {
     nombreCompleto: '',
     email: '',
     telefono: '',
-    prefijo: '+1', // Agrega `prefijo` al estado
+    prefijo: '+1', 
     mensaje: '',
     aceptaTerminos: false,
   });

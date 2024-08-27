@@ -48,7 +48,7 @@ const NavBar = () => {
         </Link>
         <Link href="/shoppingBag">
             <button className="mt-4 px-4 py-2 text-black flex items-center">
-              <ShoppingBasket className="ml-2 text-white" />
+            <ShoppingBagDrawer /> 
             </button>
           </Link>
       </div>
