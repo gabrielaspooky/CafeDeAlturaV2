@@ -7,7 +7,7 @@ import Link from "next/link";
 const ShoppingBag = () => {
   const [cart, setCart] = useState([]);
   const [shippingCost, setShippingCost] = useState(0);
-  const [selectedShipping, setSelectedShipping] = useState(""); // Nuevo estado para el método de envío
+  const [selectedShipping, setSelectedShipping] = useState("");
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -34,16 +34,19 @@ const ShoppingBag = () => {
   }, [cart, shippingCost]);
 
   const updateQuantity = (productId, change) => {
-    const updatedCart = cart.map((product) => {
-      if (product._id === productId) {
-        const newQuantity = Math.max(
-          1,
-          (parseInt(product.quantity) || 1) + change
-        );
-        return { ...product, quantity: newQuantity };
-      }
-      return product;
-    });
+    const updatedCart = cart
+      .map((product) => {
+        if (product._id === productId) {
+          const newQuantity = (parseInt(product.quantity) || 1) + change;
+          if (newQuantity <= 0) {
+            return null;
+          }
+          return { ...product, quantity: newQuantity };
+        }
+        return product;
+      })
+      .filter((product) => product !== null);
+
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
@@ -51,9 +54,9 @@ const ShoppingBag = () => {
   const handleShippingChange = (shippingOption) => {
     setSelectedShipping(shippingOption);
     if (shippingOption === "urgent") {
-      setShippingCost(9.00); 
+      setShippingCost(9.0);
     } else {
-      setShippingCost(0); 
+      setShippingCost(0);
     }
   };
 
@@ -89,7 +92,6 @@ const ShoppingBag = () => {
                       <button
                         className="text-gray-600"
                         onClick={() => updateQuantity(product._id, -1)}
-                        disabled={(parseInt(product.quantity) || 1) <= 1}
                       >
                         <MinusCircle className="h-6 w-6" />
                       </button>
@@ -162,8 +164,8 @@ const ShoppingBag = () => {
                   <span className="ml-auto text-sm font-semibold">€9.00</span>
                 </label>
                 <p className="ml-6 text-gray-500 text-sm">
-                  Recibe tu pedido en las siguientes 24h (Para pedidos
-                  realizados antes de las 13:00).
+                  Recibe tu pedido en las siguientes 24h (Para pedidos realizados
+                  antes de las 13:00).
                 </p>
               </div>
             </div>
@@ -194,8 +196,12 @@ const ShoppingBag = () => {
               <p className="text-sm text-gray-500 mb-6">Incluye IVA</p>
               <Link
                 href="/checkout"
-                className={`bg-[#2A5B45] hover:bg-[#505050] text-white text-sm py-2 px-4 rounded-lg ${!selectedShipping && "opacity-50 cursor-not-allowed"}`}
-                onClick={(e) => !selectedShipping && e.preventDefault()} // Evitar que se haga click si no hay envío seleccionado
+                className={`bg-[#2A5B45] hover:bg-[#505050] text-white text-sm py-2 px-4 rounded-lg ${
+                  !selectedShipping && "opacity-50 cursor-not-allowed"
+                }`}
+                onClick={(e) =>
+                  !selectedShipping && e.preventDefault()
+                }
               >
                 Ir al Checkout
               </Link>

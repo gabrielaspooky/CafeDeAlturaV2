@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { X } from "lucide-react"; // Icono para cerrar
+import { X } from "lucide-react"; 
 
 const ShoppingBagDrawer = ({ onClose }) => {
   const [cart, setCart] = useState([]);
@@ -64,7 +64,7 @@ const ShoppingBagDrawer = ({ onClose }) => {
                 />
                 <div className="ml-4 flex flex-col">
                   <span className="text-lg text-black">{product.brand}</span>
-                  <span className="text-black">Cantidad: {product.quantity}</span>
+                  <span className="text-black">Unidades{product.quantity}</span>
                 </div>
               </div>
             ))
