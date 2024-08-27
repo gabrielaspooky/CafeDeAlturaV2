@@ -186,12 +186,12 @@ const ShoppingBag = () => {
               >
                 Ir al Checkout
               </Link>
-              <a
+              <Link
                 href="/shop"
-                className="block text-center text-green-900 mt-4 underline"
+                className="flex text-center text-green-900 mt-4 justify-between"
               >
                 Seguir comprando
-              </a>
+              </Link>
             </div>
           </div>
         </div>
