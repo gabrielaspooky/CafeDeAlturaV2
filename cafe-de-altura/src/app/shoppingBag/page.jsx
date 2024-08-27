@@ -178,7 +178,7 @@ const ShoppingBag = () => {
                 <span className="text-lg font-semibold">TOTAL</span>
                 <span className="text-lg font-semibold">€{total.toFixed(2)}</span>
               </div>
-              <p className="text-sm text-gray-500 mb-6">Incluye IVA</p>
+              <p className="text-sm text-gray-500 mb-6">Incluye 3,78€ de IVA</p>
               <Link
                 href="/checkout"
                 className={`bg-[#2A5B45] hover:bg-[#505050] text-white text-sm py-2 px-4 rounded-lg ${!selectedShipping && "opacity-50 cursor-not-allowed"}`}
@@ -187,7 +187,7 @@ const ShoppingBag = () => {
                 Ir al Checkout
               </Link>
               <a
-                href="#"
+                href="/shop"
                 className="block text-center text-green-900 mt-4 underline"
               >
                 Seguir comprando

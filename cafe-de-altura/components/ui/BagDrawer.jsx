@@ -57,13 +57,12 @@ const ShoppingBagDrawer = ({ onClose }) => {
             <p className="text-center text-black">Tu carrito está vacío.</p>
           ) : (
             cart.map((product) => (
-              <div key={product._id} className="flex items-center mb-4">
+              <div key={product._id} className="flex items-center mb-4 gap-2">
                 <Image
                   src={product.img_url}
                   alt={product.brand}
                   width={50}
                   height={50}
-                  className="rounded"
                 />
                 <div className="ml-4 flex flex-col">
                   <span className="text-lg text-black">{product.brand}</span>
