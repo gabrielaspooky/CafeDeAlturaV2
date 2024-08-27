@@ -4,11 +4,17 @@ import React, { useState } from 'react';
 import { Coffee, Phone, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 import ShoppingBagDrawer from './BagDrawer'; // Asegúrate de que el nombre del archivo sea correcto
+import { useRouter } from 'next/navigation';
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const router = useRouter();
 
-  const handleOpenDrawer = () => setIsDrawerOpen(true);
+  const handleOpenDrawerAndNavigate = () => {
+    setIsDrawerOpen(true);
+    router.push('/shoppingBag'); // Navega a la página de la bolsa de compras
+  };
+
   const handleCloseDrawer = () => setIsDrawerOpen(false);
 
   return (
@@ -54,7 +60,7 @@ const NavBar = () => {
         {/* Shopping Bag Button */}
         <button
           className="mt-4 px-4 py-2 text-white flex items-center"
-          onClick={handleOpenDrawer}
+          onClick={handleOpenDrawerAndNavigate}
         >
           <ShoppingBag className="w-5 h-5" />
         </button>
