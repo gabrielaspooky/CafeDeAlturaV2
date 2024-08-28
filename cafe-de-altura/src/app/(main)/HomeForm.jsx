@@ -26,24 +26,24 @@ const HomeForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 w-34 h-33 p-8 bg-white">
-      <label className="block text-black">
+      <label className="block text-[#374151]">
         Nombre completo:
         <input
           type="text"
           name="nombreCompleto"
           value={formData.nombreCompleto}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
+          className="block w-full mt-1 p-2 border border-gray-300 rounded"
         />
       </label>
-      <label className="block text-black">
+      <label className="block text-[#374151]">
         Email:
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="text-black focus:outline-none focus:ring focus:ring-[#2A5B45] block w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45]"
+          className="text-[#374151] focus:outline-none focus:ring focus:ring-[#2A5B45] block w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45]"
         />
       </label>
       <label className="block text-black">
@@ -52,7 +52,7 @@ const HomeForm = () => {
           name="prefijo"
           value={formData.prefijo}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded text-black focus:outline-none focus:ring focus:ring-[#2A5B45]"
+          className="text-[#374151] block w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45]"
         >
           <option value="+34">ES</option>
           <option value="+1">US</option>
@@ -63,7 +63,7 @@ const HomeForm = () => {
           name="telefono"
           value={formData.telefono}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded text-black focus:outline-none focus:ring focus:ring-[#2A5B45]"
+          className="text-[#374151] block w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45]"
         />
       </label>
       <label className="block text-black">
@@ -72,10 +72,10 @@ const HomeForm = () => {
           name="mensaje"
           value={formData.mensaje}
           onChange={handleChange}
-          className="block w-full mt-1 p-2 border border-gray-300 rounded text-black focus:outline-none focus:ring focus:ring-[#2A5B45]"
+          className="text-[#374151] block w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45]"
         />
       </label>
-      <label className="block text-black">
+      <label className="block text-[#374151]">
         <input
           type="checkbox"
           name="aceptaTerminos"
