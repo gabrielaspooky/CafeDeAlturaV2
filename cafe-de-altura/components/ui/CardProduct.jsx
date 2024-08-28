@@ -52,7 +52,7 @@ export default function Cards({ products }) {
               alt={product.brand} 
               className="w-[219px] h-[219px] object-cover rounded-t-lg" 
             />
-            <h2 className="text-lg font-semibold mt-2 text-black text-center">{product.brand}</h2>
+            <h2 className="text-lg font-semibold mt-2 text-black text-center whitespace-nowrap">{product.brand}</h2>
             <p className="text-gray-600 text-center">
               €{typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}
             </p>
