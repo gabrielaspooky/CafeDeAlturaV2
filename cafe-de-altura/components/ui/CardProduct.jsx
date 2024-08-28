@@ -43,11 +43,14 @@ export default function Cards({ products }) {
     <>
       <div className="grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 w-full">
         {products.map((product) => (
-          <div key={product._id} className="rounded-lg p-4 shadow-md flex flex-col items-center">
+          <div 
+            key={product._id} 
+            className={`p-12 rounded-lg w-[282px] h-[391.39px] border border-[#E3DED7] ${!product.available ? 'opacity-40' : ''} flex flex-col items-center`}
+          >
             <img 
               src={product.img_url} 
               alt={product.brand} 
-              className="w-full h-48 object-cover rounded-t-lg" 
+              className="w-[219px] h-[219px] object-cover rounded-t-lg" 
             />
             <h2 className="text-lg font-semibold mt-2 text-black text-center">{product.brand}</h2>
             <p className="text-gray-600 text-center">
