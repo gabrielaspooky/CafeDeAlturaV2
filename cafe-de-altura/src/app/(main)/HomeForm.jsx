@@ -47,32 +47,35 @@ const HomeForm = () => {
         />
       </label>
       <label className="block text-black">
-        Teléfono:
-        <select
-          name="prefijo"
-          value={formData.prefijo}
-          onChange={handleChange}
-          className="text-[#374151] block w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45]"
-        >
-          <option value="+34">ES</option>
-          <option value="+1">US</option>
-          
-        </select>
-        <input
-          type="tel"
-          name="telefono"
-          value={formData.telefono}
-          onChange={handleChange}
-          className="text-[#374151] block w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45]"
-        />
-      </label>
+  Teléfono:
+  <div className="flex items-center mt-1 border border-gray-300 rounded focus-within:ring focus-within:ring-[#2A5B45]">
+    <select
+      name="prefijo"
+      value={formData.prefijo}
+      onChange={handleChange}
+      className="text-[#374151] bg-transparent pl-3 pr-6 py-2 rounded-l border-r border-gray-300 focus:outline-none focus:ring-0"
+    >
+      <option value="+34">ES</option>
+      <option value="+1">US</option>
+    </select>
+    <input
+      type="tel"
+      name="telefono"
+      value={formData.telefono}
+      onChange={handleChange}
+      className="text-[#374151] block w-full py-2 pl-3 pr-4 border-none rounded-r focus:outline-none focus:ring-0"
+      placeholder="+1 (555) 987-6543"
+    />
+  </div>
+</label>
+
       <label className="block text-black">
         <textarea
         placeholder='¿En qué podemos ayudarte?'
           name="mensaje"
           value={formData.mensaje}
           onChange={handleChange}
-          className="text-[#374151] block w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45]"
+          className="text-[#374151] block mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-[#2A5B45] w-full"
         />
       </label>
       <label className="block text-[#374151]">
