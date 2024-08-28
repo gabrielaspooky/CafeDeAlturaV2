@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Coffee, Phone, ShoppingBag } from 'lucide-react';
+import { Coffee, Phone } from 'lucide-react';
 import Link from 'next/link';
 import ShoppingBagDrawer from './BagDrawer'; 
 import { useRouter } from 'next/navigation';
-import ProductCounter from '@/app/(main)/ProductCounter';
+import Image from 'next/image';
+// import ProductCounter from "../../components/ProductCounter"
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -65,13 +66,19 @@ const NavBar = () => {
           className="text-white flex items-center py-1 px-3"
           onClick={handleOpenDrawerAndNavigate}
         >
-          <ShoppingBag className="w-[20px] h-[20px] top-1" />
+            <Image
+          src={`/CartBag.svg`}
+          alt="Bag icon"
+          height={24}
+          width={24}
+          
+        />
         </button>
       </div>
 
       {/* Shopping Bag Drawer */}
       {isDrawerOpen && <ShoppingBagDrawer onClose={handleCloseDrawer} />}
-      <ProductCounter />
+      {/* <ProductCounter /> */}
     </nav>
   );
 };
