@@ -8,10 +8,12 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between">
         <div className="mb-8 md:mb-0">
+          <Link href={"/"}>
             <h2 className="text-lg flex items-center">
               <span>cafedealtura.com</span> 
               <Coffee className="ml-2 h-5 w-5" />
             </h2>
+            </Link>
             <div className="mt-4">
               <p>Te ayudamos en</p>
               <div className="bg-[#3C3C3C] hover:bg-[#505050] text-sm py-1 px-3 rounded-md flex items-center mt-2 gap-2 text-center">
