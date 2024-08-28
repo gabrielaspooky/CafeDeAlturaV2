@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import Link from "next/link";
 import ProductFetcher from "../api/products/ProductFetcher";
 import Cards from "../../../components/ui/CardProduct";
@@ -18,7 +18,7 @@ const ProductCards = () => (
     </div>
     <Link className="py-8 flex justify-between items-center gap-4 text-sm font-semibold text-black" href="/shop">
       Ver todos
-      <ArrowRight className="h-6 w-6" />
+      <MoveRight className="h-6 w-6" />
     </Link>
   </div>
 );
