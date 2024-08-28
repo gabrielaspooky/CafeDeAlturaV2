@@ -43,7 +43,7 @@ export default function Cards({ products }) {
     <>
       <div className="grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 w-full">
         {products.map((product) => (
-          <div key={product._id} className="border rounded-lg p-4 shadow-md flex flex-col items-center">
+          <div key={product._id} className="rounded-lg p-4 shadow-md flex flex-col items-center">
             <img 
               src={product.img_url} 
               alt={product.brand} 
