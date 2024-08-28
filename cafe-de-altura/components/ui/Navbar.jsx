@@ -5,6 +5,7 @@ import { Coffee, Phone, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 import ShoppingBagDrawer from './BagDrawer'; 
 import { useRouter } from 'next/navigation';
+import ProductCounter from '@/app/(main)/ProductCounter';
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -70,6 +71,7 @@ const NavBar = () => {
 
       {/* Shopping Bag Drawer */}
       {isDrawerOpen && <ShoppingBagDrawer onClose={handleCloseDrawer} />}
+      <ProductCounter />
     </nav>
   );
 };
