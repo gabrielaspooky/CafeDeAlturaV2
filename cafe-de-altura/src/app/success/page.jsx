@@ -21,10 +21,10 @@ const Success = () => {
 
   return (
     <div className="bg-white min-h-screen flex items-center justify-center text-black">
-      <div className="max-w-7xl w-full px-4 sm:px-6 lg:px-8 text-center">
-      <div className="grid justify-center">
-          <Image src={`/clipboard.svg`} alt="Check icon" width={64} height={64} />
-          <h2 className="text-[#2A5B45] text-subtitle font-bold mt-4">
+    <div className="max-w-7xl w-full px-4 sm:px-6 lg:px-8 text-center">
+      <div className="flex flex-col items-center">
+        <Image src={`/clipboard.svg`} alt="Check icon" width={64} height={64} />
+          <h2 className="text-[#2A5B45] text-lg mt-4 font-medium">
             El pedido ha sido realizado con éxito
           </h2>
           <p className="font-normal text-[14px] leading-[16px] mt-4 mx-auto w-full max-w-md">
@@ -35,9 +35,10 @@ const Success = () => {
         </div>
         
         {/* Cart Summary Section */}
-        <div className="lg:w-1/2 w-full mx-auto mt-8">
-          <div className="border border-gray-200 rounded-lg p-6 bg-[#F7F5F3]">
-            <h3 className="text-lg font-semibold">Tu pedido</h3>
+        <div className="lg:w-1/2 w-full mt-8">
+          <div className="p-6 bg-[#F7F5F3] h-[391px] w-[1200px]">
+            <h3 className="text-lg font-semibold flex flex-initial">Tu pedido</h3>
+            <hr />
             {cart.map((product, index) => (
               <div key={index} className="flex justify-between mb-4">
                 <div className="flex items-center">
@@ -65,18 +66,19 @@ const Success = () => {
               <span className="text-sm">ENVÍO</span>
               <span className="text-sm font-semibold">GRATIS</span>
             </div>
+            <hr />
             <div className="flex justify-between mt-6">
               <span className="text-lg font-semibold">TOTAL</span>
               <span className="text-lg font-semibold">€{total.toFixed(2)}</span>
             </div>
-            <p className="text-sm text-gray-500 mt-6">Incluye 3,78€ de IVA</p>
+            <p className="text-sm text-gray-500 mt-6 flex justify-end">Incluye 3,78€ de IVA</p>
           </div>
         </div>
         
         <div className="mt-8">
           <button 
             onClick={handleBackToStore} 
-            className="bg-[#2A5B45] hover:bg-[#505050] text-white text-sm py-2 px-4 rounded-lg"
+            className="bg-[#2A5B45] text-white text-sm py-2 px-4 rounded-lg"
           >
             Volver a la tienda
           </button>
