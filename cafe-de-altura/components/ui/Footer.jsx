@@ -7,9 +7,10 @@ const Footer = () => {
     <footer className="bg-black text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between">
-          {/* Left Section */}
-          <div className="mb-8 md:mb-0">
-            <h2 className="text-lg">cafedealtura.com <Coffee />
+        <div className="mb-8 md:mb-0">
+            <h2 className="text-lg flex items-center">
+              <span>cafedealtura.com</span> 
+              <Coffee className="ml-2 h-5 w-5" />
             </h2>
             <div className="mt-4">
               <p>Te ayudamos en</p>

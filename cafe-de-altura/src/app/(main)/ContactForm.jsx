@@ -5,7 +5,7 @@ import HomeForm from './HomeForm';
 
 const ContactForm = () => {
   return (
-    <div className="h-[480px] bg-[#E3DED7] flex justify-center items-center">
+    <div className="h-[552px] bg-[#E3DED7] flex justify-center items-center">
       <div className="mb-8 lg:mb-0 lg:w-1/2 text-[#111827]">
         <h2 className="text-2xl font-bold mb-4 text-[#111827]">Entra en contacto con nosotros</h2>
         <p className="mb-4 text-[#6B7280]">

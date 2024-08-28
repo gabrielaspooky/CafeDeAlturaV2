@@ -25,7 +25,7 @@ const HomeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 w-34 h-33 p-8 bg-white">
+    <form onSubmit={handleSubmit} className="space-y-4 w-[588px] h-[552px] p-8 bg-white">
       <label className="block text-[#374151]">
         Nombre completo:
         <input
