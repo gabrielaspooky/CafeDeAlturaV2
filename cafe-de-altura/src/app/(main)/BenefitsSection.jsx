@@ -21,14 +21,14 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <div className="bg-cover bg-center py-12" style={{ backgroundImage: `url('/coffee-background.jpg')` }}>
-      <h2 className="text-center text-2xl text-white mb-8">Café con las mejores condiciones</h2>
-      <div className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-6">
-        {benefits.map((benefit, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-lg text-center w-80">
-            <div className="flex justify-center">{benefit.icon}</div>
-            <h3 className="text-lg font-semibold text-gray-800 mt-4">{benefit.title}</h3>
-            <p className="text-gray-600 mt-2">{benefit.description}</p>
+   <div className="bg-cover bg-center py-12" style={{ backgroundImage: `url('/coffee-background.jpg')` }}>
+    <h2 className="text-center text-2xl text-white mb-8">Café con las mejores condiciones</h2>
+    <div className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-6">
+      {benefits.map((benefit, index) => (
+        <div key={index} className="bg-white p-6 rounded-lg shadow-lg text-center w-80 flex-shrink-0 flex-grow-0">
+          <div className="flex justify-center">{benefit.icon}</div>
+          <h3 className="text-lg font-semibold text-gray-800 mt-4">{benefit.title}</h3>
+          <p className="text-gray-600 mt-2">{benefit.description}</p>
           </div>
         ))}
       </div>
