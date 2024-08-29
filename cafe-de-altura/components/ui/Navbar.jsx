@@ -35,7 +35,7 @@ const NavBar = () => {
       </Link>
 
       {/* Navigation Links */}
-      <ul className="flex gap-4 text-sm font-semibold">
+      <ul className="flex gap-4 text-sm h-[512] w-[32]">
         <li>
           <Link href="/shop" className="hover:bg-[#3E3E3E] py-2 px-3 rounded-md">Tienda</Link>
         </li>
@@ -62,7 +62,7 @@ const NavBar = () => {
         </div>
 
         {/* Login Button */}
-        <Link href="/login" className="bg-[#3C3C3C] hover:bg-[#505050] text-white text-sm py-1 px-3 rounded-md">
+        <Link href="/login" className="w-[130] h-[40] bg-[#3C3C3C] hover:bg-[#505050] text-white text-sm py-1 px-3 rounded-md">
           Iniciar sesión
         </Link>
         

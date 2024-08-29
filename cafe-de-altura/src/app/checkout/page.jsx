@@ -55,6 +55,7 @@ const CheckoutPage = () => {
         <div className="flex flex-col lg:flex-row">
           {/* Left Section - Form */}
           <div className="lg:w-3/4 w-full lg:pr-8">
+
             <PaymentForm />
 
             {/* Address Section */}
@@ -138,7 +139,7 @@ const CheckoutPage = () => {
                   />
                 </div>
 
-                {/* Flex Container for Calle, Número, Piso, and Puerta */}
+                
                 <div className="flex gap-1">
                   <div className="flex-1">
                     <label htmlFor="calle" className="block text-sm font-medium text-gray-700">Calle</label>

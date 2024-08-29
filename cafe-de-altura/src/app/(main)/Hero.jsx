@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="flex justify-center items-center min-h-[486px] shadow-[0px_4px_4px_0px_#00000040] bg-[#E3DED7]">
+    <div className="flex justify-center items-center min-h-[486px] shadow-[0px_4px_4px_0px_#00000040] bg-[#f7f6f3]">
       <div className="flex items-center justify-between max-w-[1200px] min-h-[390px] gap-6">
         <div className="flex flex-col justify-between max-w-[588px] min-h-[232px] gap-4">
           <h3 className="font-semibold text-lg leading-6 text-[#2A5B45]">De la planta a tu taza</h3>
