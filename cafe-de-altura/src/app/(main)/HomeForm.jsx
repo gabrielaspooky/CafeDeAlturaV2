@@ -70,6 +70,7 @@ const HomeForm = () => {
 </label>
 
       <label className="block text-black">
+      Comentarios
         <textarea
         placeholder='¿En qué podemos ayudarte?'
           name="mensaje"

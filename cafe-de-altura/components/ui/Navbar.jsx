@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Coffee, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import Link from 'next/link';
 import ShoppingBagDrawer from './BagDrawer'; 
 import { useRouter } from 'next/navigation';
@@ -25,7 +25,12 @@ const NavBar = () => {
       <Link href={"/"}>
       <div className="flex items-center gap-1">
         <p className="text-lg">cafedealtura.com</p>
-        <Coffee className="w-5 h-5" />
+        <Image
+          src={`/CoffeeIcon.svg`}
+          width={20}
+          height={24}
+          alt="Coffee icon"
+       />
       </div>
       </Link>
 

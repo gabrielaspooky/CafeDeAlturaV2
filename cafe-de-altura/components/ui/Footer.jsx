@@ -1,5 +1,6 @@
 import React from 'react';
-import { Phone, Mail, Coffee } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -11,7 +12,12 @@ const Footer = () => {
           <Link href={"/"}>
             <h2 className="text-lg flex items-center">
               <span>cafedealtura.com</span> 
-              <Coffee className="ml-2 h-5 w-5" />
+              <Image
+          src={`/CoffeeIcon.svg`}
+          width={20}
+          height={24}
+          alt="Coffee icon"
+       />
             </h2>
             </Link>
             <div className="mt-4">
