@@ -14,7 +14,6 @@ const NavBar = () => {
 
   const handleOpenDrawerAndNavigate = () => {
     setIsDrawerOpen(true);
-    router.push('/shoppingBag'); 
   };
 
   const handleCloseDrawer = () => setIsDrawerOpen(false);

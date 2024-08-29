@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import Buttons from '../../../components/ui/Buttons';
 
 const HomeForm = () => {
   const [formData, setFormData] = useState({
@@ -89,7 +90,8 @@ const HomeForm = () => {
         />
         Acepto la Política de Privacidad y los Términos y condiciones.
       </label>
-      <button type="submit" className="px-4 py-2 bg-[#2A5B45] text-white rounded">Enviar</button>
+      <br />
+      <Buttons text={"Enviar"} typeBtn={"primary"} />
     </form>
   );
 };
