@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
+import Buttons from "./Buttons";
 
 const ShoppingBagDrawer = ({ onClose }) => {
   const [cart, setCart] = useState([]);
@@ -32,7 +33,7 @@ const ShoppingBagDrawer = ({ onClose }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
 
-  // Calcular el total de unidades en el carrito
+  
   const totalUnits = cart.reduce((sum, product) => sum + (parseInt(product.quantity) || 1), 0);
 
   return (
@@ -74,6 +75,12 @@ const ShoppingBagDrawer = ({ onClose }) => {
             ))
           )}
         </div>
+        {cart.length > 0 && (
+          <div className="flex justify-center items-center mb-4 gap-2">
+            <Buttons text={"Ir al checkout"} typeBtn={"primary"} href="/shoppingBag" />
+          </div>
+        )}
+
       </div>
     </div>
   );

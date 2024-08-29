@@ -1,22 +1,14 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
-import { usePathname } from 'next/navigation';
 
 const Success = () => {
   const [cart, setCart] = useState([]);
-  // const pathname = usePathname;
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setCart(savedCart);
   }, []);
-
-  // useEffect(() => {
-  //   if (pathname === '/success') {
-  //     localStorage.removeItem('cart');
-  //   }
-  // }, [pathname]);
 
   const handleBackToStore = () => {
     localStorage.removeItem('cart'); 
@@ -97,3 +89,4 @@ const Success = () => {
 };
 
 export default Success;
+
