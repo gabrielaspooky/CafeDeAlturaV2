@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import Image from "next/image";
 
 const FeatureSection = () => {
@@ -19,7 +19,7 @@ const FeatureSection = () => {
               className="leading-4 font-semibold text-black flex gap-4 items-center text-sm"
               href=""
             >
-              Cómo llegar <ArrowRight />
+              Cómo llegar <MoveRight />
             </a>
           </div>
         </div>

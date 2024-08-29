@@ -1,10 +1,12 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Coffee, Phone, ShoppingBag } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import Link from 'next/link';
 import ShoppingBagDrawer from './BagDrawer'; 
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+// import ProductCounter from "../../components/ProductCounter"
 
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -12,21 +14,27 @@ const NavBar = () => {
 
   const handleOpenDrawerAndNavigate = () => {
     setIsDrawerOpen(true);
-    router.push('/shoppingBag'); 
   };
 
   const handleCloseDrawer = () => setIsDrawerOpen(false);
 
   return (
-    <nav className="top-0 bg-[#2B2A2B] relative z-50 h-12 flex justify-between items-center px-8 text-[#FFFFFF] w-full">
+    <nav className="sticky top-0 bg-[#2B2A2B] z-50 h-12 flex justify-between items-center px-8 text-[#FFFFFF] w-full">
       {/* Logo Section */}
+      <Link href={"/"}>
       <div className="flex items-center gap-1">
-        <p className="text-lg font-semibold">cafedealtura.com</p>
-        <Coffee className="w-5 h-5" />
+        <p className="text-lg">cafedealtura.com</p>
+        <Image
+          src={`/CoffeeIcon.svg`}
+          width={20}
+          height={24}
+          alt="Coffee icon"
+       />
       </div>
+      </Link>
 
       {/* Navigation Links */}
-      <ul className="flex gap-4 text-sm font-semibold">
+      <ul className="flex gap-4 text-sm h-[512] w-[32]">
         <li>
           <Link href="/shop" className="hover:bg-[#3E3E3E] py-2 px-3 rounded-md">Tienda</Link>
         </li>
@@ -53,21 +61,28 @@ const NavBar = () => {
         </div>
 
         {/* Login Button */}
-        <Link href="/login" className="bg-[#3C3C3C] hover:bg-[#505050] text-white text-sm py-1 px-3 rounded-md">
+        <Link href="/login" className="w-[130] h-[40] bg-[#3C3C3C] hover:bg-[#505050] text-white text-sm py-1 px-3 rounded-md">
           Iniciar sesión
         </Link>
         
         {/* Shopping Bag Button */}
         <button
-          className="mt-4 px-4 py-2 text-white flex items-center"
+          className="text-white flex items-center py-1 px-3"
           onClick={handleOpenDrawerAndNavigate}
         >
-          <ShoppingBag className="w-5 h-5" />
+            <Image
+          src={`/CartBag.svg`}
+          alt="Bag icon"
+          height={24}
+          width={24}
+          
+        />
         </button>
       </div>
 
       {/* Shopping Bag Drawer */}
       {isDrawerOpen && <ShoppingBagDrawer onClose={handleCloseDrawer} />}
+      {/* <ProductCounter /> */}
     </nav>
   );
 };

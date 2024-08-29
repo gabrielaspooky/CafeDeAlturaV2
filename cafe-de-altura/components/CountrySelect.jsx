@@ -7,7 +7,7 @@ const CountrySelect = () => {
 
   useEffect(() => {
     // Fetch country data from a public API
-    fetch('https://restcountries.com/v3.1/all')
+    fetch('https://restcountries.com/v3.1/lang/spanish')
       .then(response => response.json())
       .then(data => {
         const countries = data.map(country => ({

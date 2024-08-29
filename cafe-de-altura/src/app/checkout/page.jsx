@@ -1,7 +1,8 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from 'react';
 import CountrySelect from '../../../components/CountrySelect';
 import Link from 'next/link';
+import PaymentForm from '../../../components/PaymentForm';
 
 const CheckoutPage = () => {
   const [cartSummary, setCartSummary] = useState({
@@ -51,159 +52,148 @@ const CheckoutPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-2xl font-semibold text-center text-green-900 mb-8">Checkout</h1>
 
-        <div className="flex flex-col lg:flex-row justify-between">
-          
-          {/* Left Section - Payment and Shipping */}
-          <div className="lg:w-3/4 w-full">
+        <div className="flex flex-col lg:flex-row">
+          {/* Left Section - Form */}
+          <div className="lg:w-3/4 w-full lg:pr-8">
+
+            <PaymentForm />
+
+            {/* Address Section */}
             <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-4">Seleccionar método de pago</h2>
-              
-              <div className="border-b border-gray-300 py-4">
-                <label className="flex items-center mb-4">
-                  <input type="radio" name="payment" className="form-radio accent-[#2A5B45]" />
-                  <span className="ml-2 text-sm font-semibold block">Tarjeta de débito</span>
-                  <span className="ml-2 text-sm text-gray-500 block">Opción estándar sin seguimiento</span>
-                </label>
-                <div className="w-[279px] h-[181px] flex flex-col gap-2">
-                  <label className="block text-black">
-                    Titular
-                    <input
-                      type="text"
-                      name="titular"
-                      placeholder="Nombre del titular"
-                      className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black"
-                      value={formData.titular}
-                      onChange={handleChange}
-                    />
-                  </label>
-                  <label className="block text-black">
-                    Número de la tarjeta
-                    <input
-                      type="text"
-                      name="numeroTarjeta"
-                      placeholder="1234 1234 1234 1234"
-                      className="form-input mt-1 block w-full p-2 border border-gray-300 rounded text-black"
-                      value={formData.numeroTarjeta}
-                      onChange={handleChange}
-                    />
-                  </label>
-                  <div className="w-[279px] min-h-[55px] flex gap-6">
-                    <label className="block text-black">
-                      Fecha de caducidad
-                      <input
-                        type="date"
-                        name="fechaCaducidad"
-                        className="form-input p-2 border border-gray-300 rounded text-black"
-                        value={formData.fechaCaducidad}
-                        onChange={handleChange}
-                      />
-                    </label>
-                    <label className="block text-black">
-                      CVC
-                      <input
-                        type="text"
-                        name="cvc"
-                        placeholder="123"
-                        className="p-2 border border-gray-300 rounded text-black"
-                        value={formData.cvc}
-                        onChange={handleChange}
-                      />
-                    </label>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Otra sección de pago y dirección de envío */}
-              
-              <div className="mb-8">
-                <h2 className="text-lg font-semibold mb-4">Dirección de envío</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <h2 className="text-lg font-semibold mb-4">Dirección de envío</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative">
+                  <label htmlFor="nombre" className="block text-sm font-medium text-gray-700">Nombre</label>
                   <input
                     type="text"
+                    id="nombre"
                     name="nombre"
                     placeholder="Nombre"
                     className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
                     value={formData.nombre}
                     onChange={handleChange}
                   />
+                </div>
+                <div className="relative">
+                  <label htmlFor="apellidos" className="block text-sm font-medium text-gray-700">Apellidos</label>
                   <input
                     type="text"
+                    id="apellidos"
                     name="apellidos"
                     placeholder="Apellidos"
                     className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
                     value={formData.apellidos}
                     onChange={handleChange}
                   />
+                </div>
+                <div className="relative">
+                  <label htmlFor="telefono" className="block text-sm font-medium text-gray-700">Teléfono</label>
                   <input
                     type="text"
+                    id="telefono"
                     name="telefono"
                     placeholder="Teléfono"
                     className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
                     value={formData.telefono}
                     onChange={handleChange}
                   />
+                </div>
+                <div className="relative">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
                   <input
                     type="email"
+                    id="email"
                     name="email"
                     placeholder="Email"
                     className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
                     value={formData.email}
                     onChange={handleChange}
                   />
+                </div>
+                <div className="relative">
+                  <label htmlFor="country" className="block text-sm font-medium text-gray-700">País</label>
                   <CountrySelect />
+                </div>
+                <div className="relative">
+                  <label htmlFor="poblacion" className="block text-sm font-medium text-gray-700">Población</label>
                   <input
                     type="text"
+                    id="poblacion"
                     name="poblacion"
                     placeholder="Población"
                     className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
                     value={formData.poblacion}
                     onChange={handleChange}
                   />
+                </div>
+                <div className="relative">
+                  <label htmlFor="cp" className="block text-sm font-medium text-gray-700">CP</label>
                   <input
                     type="text"
+                    id="cp"
                     name="cp"
                     placeholder="CP"
                     className="block w-full mt-1 p-2 border border-gray-300 rounded text-black"
                     value={formData.cp}
                     onChange={handleChange}
                   />
-                  <input
-                    type="text"
-                    name="calle"
-                    placeholder="Calle"
-                    className="w-full mt-1 p-2 border border-gray-300 rounded text-black"
-                    value={formData.calle}
-                    onChange={handleChange}
-                  />
-                  <input
-                    type="text"
-                    name="numero"
-                    placeholder="Nº"
-                    className="w-full mt-1 p-2 border border-gray-300 rounded text-black"
-                    value={formData.numero}
-                    onChange={handleChange}
-                  />
-                  <input
-                    type="text"
-                    name="piso"
-                    placeholder="Piso"
-                    className="p-2 border border-gray-300 rounded text-black"
-                    value={formData.piso}
-                    onChange={handleChange}
-                  />
-                  <input
-                    type="text"
-                    name="puerta"
-                    placeholder="Puerta"
-                    className="p-2 border border-gray-300 rounded text-black"
-                    value={formData.puerta}
-                    onChange={handleChange}
-                  />
+                </div>
+
+                
+                <div className="flex gap-1">
+                  <div className="flex-1">
+                    <label htmlFor="calle" className="block text-sm font-medium text-gray-700">Calle</label>
+                    <input
+                      type="text"
+                      id="calle"
+                      name="calle"
+                      placeholder="Calle"
+                      className="w-[112.25px] h-[36px] p-[10px] border border-gray-300 rounded-tl-lg border-b-0 border-r-0 border-l-0 border-t text-black opacity-100"
+                      value={formData.calle}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label htmlFor="numero" className="block text-sm font-medium text-gray-700">Número</label>
+                    <input
+                      type="text"
+                      id="numero"
+                      name="numero"
+                      placeholder="Nº"
+                      className="w-[112.25px] h-[36px] p-[10px] border border-gray-300 border-b-0 border-r-0 border-l-0 border-t text-black opacity-100"
+                      value={formData.numero}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label htmlFor="piso" className="block text-sm font-medium text-gray-700">Piso</label>
+                    <input
+                      type="text"
+                      id="piso"
+                      name="piso"
+                      placeholder="Piso"
+                      className="w-[112.25px] h-[36px] p-[10px] border border-gray-300 border-b-0 border-r-0 border-l-0 border-t text-black opacity-100"
+                      value={formData.piso}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label htmlFor="puerta" className="block text-sm font-medium text-gray-700">Puerta</label>
+                    <input
+                      type="text"
+                      id="puerta"
+                      name="puerta"
+                      placeholder="Puerta"
+                      className="w-[112.25px] h-[36px] p-[10px] border border-gray-300 border-b-0 border-r-0 border-l-0 border-t text-black opacity-100"
+                      value={formData.puerta}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
+
           {/* Right Section - Cart Summary */}
           <div className="lg:w-1/4 w-full lg:ml-8 mt-8 lg:mt-0">
             <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">

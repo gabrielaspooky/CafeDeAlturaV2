@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
+import { ChevronDown, ChevronUp, MoveRight } from 'lucide-react';
 
 const FaqItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +55,7 @@ const Faqs = () => {
       ))}
       <div className="text-center mt-8">
         <a href="#" className="inline-block text-white hover:underline">
-          Resolvemos tus dudas <ArrowRight className="inline w-4 h-4 ml-1" />
+          Resolvemos tus dudas <MoveRight className="inline w-4 h-4 ml-1" />
         </a>
       </div>
     </div>
