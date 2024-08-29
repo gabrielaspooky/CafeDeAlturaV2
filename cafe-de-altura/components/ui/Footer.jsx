@@ -28,7 +28,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center mt-2 bg-[#515051] hover:bg-[#3C3C3C] text-sm py-1 px-3 rounded-md text-center">
                 <Mail className="h-6 w-6 text-white mr-2" />
-                <Link href="mailto:hola@cafedealtura.com" className="text-white bg-[#515051] hover:bg-[#3C3C3C] text-sm py-1 px-3 rounded-md">hola@cafedealtura.com</Link>
+                <Link href="mailto:hola@cafedealtura.com" className="text-white text-sm py-1 px-3 rounded-md">hola@cafedealtura.com</Link>
               </div>
             </div>
           </div>

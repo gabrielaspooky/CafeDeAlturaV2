@@ -15,8 +15,8 @@ const Hero = () => {
             hogar.
           </p>
           <div className="flex items-center min-w-[321px] min-h-[40px] gap-4 font-semibold text-sm leading-4">
-            <Buttons text={"Descubrir orígenes"} typeBtn={"black"} />
-            <Buttons text={"Comprar café"} typeBtn={"green"}/>
+            <Buttons text={"Descubrir orígenes"} typeBtn={"dark"} />
+            <Buttons text={"Comprar café"} typeBtn={"primary"}/>
           </div>
         </div>
         <Image src={`/Heroimage.png`} alt="hero image" width={588} height={390}/>
