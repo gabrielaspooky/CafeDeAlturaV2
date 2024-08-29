@@ -20,7 +20,7 @@ const NavBar = () => {
   const handleCloseDrawer = () => setIsDrawerOpen(false);
 
   return (
-    <nav className="top-0 bg-[#2B2A2B] relative z-50 h-12 flex justify-between items-center px-8 text-[#FFFFFF] w-full">
+    <nav className="sticky top-0 bg-[#2B2A2B] z-50 h-12 flex justify-between items-center px-8 text-[#FFFFFF] w-full">
       {/* Logo Section */}
       <Link href={"/"}>
       <div className="flex items-center gap-1">
